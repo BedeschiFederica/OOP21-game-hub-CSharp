@@ -29,74 +29,74 @@ namespace Delja_Alesja
                     {
                         if (position % ViewField.GridSize == 0)
                         {
-                            queue.Add(Field.getCell().get(position + ViewField.GridSize));
-                            queue.Add(Field.getCell().get(position + ViewField.GridSize + 1));
-                            queue.Add(Field.getCell().get(position + 1));
+                            queue.Add(Field.GetCell().get(position + ViewField.GridSize));
+                            queue.Add(Field.GetCell().get(position + ViewField.GridSize + 1));
+                            queue.Add(Field.GetCell().get(position + 1));
                         }
                         else if (position % ViewField.GridSize == ViewField.GridSize - 1)
                         {
-                            queue.Add(Field.getCell().get(position + ViewField.GridSize));
-                            queue.Add(Field.getCell().get(position + ViewField.GridSize - 1));
-                            queue.Add(Field.getCell().get(position - 1));
+                            queue.Add(Field.GetCell().get(position + ViewField.GridSize));
+                            queue.Add(Field.GetCell().get(position + ViewField.GridSize - 1));
+                            queue.Add(Field.GetCell().get(position - 1));
                         }
                         else
                         {
-                            queue.Add(Field.getCell().get(position + ViewField.GridSize));
-                            queue.Add(Field.getCell().get(position + ViewField.GridSize + 1));
-                            queue.Add(Field.getCell().get(position + ViewField.GridSize - 1));
-                            queue.Add(Field.getCell().get(position + 1));
-                            queue.Add(Field.getCell().get(position - 1));
+                            queue.Add(Field.GetCell().get(position + ViewField.GridSize));
+                            queue.Add(Field.GetCell().get(position + ViewField.GridSize + 1));
+                            queue.Add(Field.GetCell().get(position + ViewField.GridSize - 1));
+                            queue.Add(Field.GetCell().get(position + 1));
+                            queue.Add(Field.GetCell().get(position - 1));
                         }
                     }
                     else if (position >= (ViewField.GridSize * (ViewField.GridSize - 1)))
                     {
                         if (position % ViewField.GridSize == 0)
                         {
-                            queue.Add(Field.getCell().get(position - ViewField.GridSize));
-                            queue.Add(Field.getCell().get(position - ViewField.GridSize + 1));
-                            queue.Add(Field.getCell().get(position + 1));
+                            queue.Add(Field.GetCell().get(position - ViewField.GridSize));
+                            queue.Add(Field.GetCell().get(position - ViewField.GridSize + 1));
+                            queue.Add(Field.GetCell().get(position + 1));
                         }
                         else if (position % ViewField.GridSize == ViewField.GridSize - 1)
                         {
-                            queue.Add(Field.getCell().get(position - ViewField.GridSize));
-                            queue.Add(Field.getCell().get(position - ViewField.GridSize - 1));
-                            queue.Add(Field.getCell().get(position - 1));
+                            queue.Add(Field.GetCell().get(position - ViewField.GridSize));
+                            queue.Add(Field.GetCell().get(position - ViewField.GridSize - 1));
+                            queue.Add(Field.GetCell().get(position - 1));
                         }
                         else
                         {
-                            queue.Add(Field.getCell().get(position - ViewField.GridSize));
-                            queue.Add(Field.getCell().get(position - ViewField.GridSize + 1));
-                            queue.Add(Field.getCell().get(position - ViewField.GridSize - 1));
-                            queue.Add(Field.getCell().get(position + 1));
-                            queue.Add(Field.getCell().get(position - 1));
+                            queue.Add(Field.GetCell().get(position - ViewField.GridSize));
+                            queue.Add(Field.GetCell().get(position - ViewField.GridSize + 1));
+                            queue.Add(Field.GetCell().get(position - ViewField.GridSize - 1));
+                            queue.Add(Field.GetCell().get(position + 1));
+                            queue.Add(Field.GetCell().get(position - 1));
                         }
                     }
                     else if (position % ViewField.GridSize == 0)
                     {
-                        queue.Add(Field.getCell().get(position - ViewField.GridSize));
-                        queue.Add(Field.getCell().get(position + ViewField.GridSize));
-                        queue.Add(Field.getCell().get(position - ViewField.GridSize + 1));
-                        queue.Add(Field.getCell().get(position + ViewField.GridSize + 1));
-                        queue.Add(Field.getCell().get(position + 1));
+                        queue.Add(Field.GetCell().get(position - ViewField.GridSize));
+                        queue.Add(Field.GetCell().get(position + ViewField.GridSize));
+                        queue.Add(Field.GetCell().get(position - ViewField.GridSize + 1));
+                        queue.Add(Field.GetCell().get(position + ViewField.GridSize + 1));
+                        queue.Add(Field.GetCell().get(position + 1));
                     }
                     else if (position % ViewField.GridSize == ViewField.GridSize - 1)
                     {
-                        queue.Add(Field.getCell().get(position - ViewField.GridSize));
-                        queue.Add(Field.getCell().get(position + ViewField.GridSize));
-                        queue.Add(Field.getCell().get(position - ViewField.GridSize - 1));
-                        queue.Add(Field.getCell().get(position + ViewField.GridSize - 1));
-                        queue.Add(Field.getCell().get(position - 1));
+                        queue.Add(Field.GetCell().get(position - ViewField.GridSize));
+                        queue.Add(Field.GetCell().get(position + ViewField.GridSize));
+                        queue.Add(Field.GetCell().get(position - ViewField.GridSize - 1));
+                        queue.Add(Field.GetCell().get(position + ViewField.GridSize - 1));
+                        queue.Add(Field.GetCell().get(position - 1));
                     }
                     else
                     {
-                        queue.Add(Field.getCell().get(position - ViewField.GridSize));
-                        queue.Add(Field.getCell().get(position + ViewField.GridSize));
-                        queue.Add(Field.getCell().get(position - ViewField.GridSize - 1));
-                        queue.Add(Field.getCell().get(position + ViewField.GridSize - 1));
-                        queue.Add(Field.getCell().get(position - ViewField.GridSize + 1));
-                        queue.Add(Field.getCell().get(position + ViewField.GridSize + 1));
-                        queue.Add(Field.getCell().get(position - 1));
-                        queue.Add(Field.getCell().get(position + 1));
+                        queue.Add(Field.GetCell().get(position - ViewField.GridSize));
+                        queue.Add(Field.GetCell().get(position + ViewField.GridSize));
+                        queue.Add(Field.GetCell().get(position - ViewField.GridSize - 1));
+                        queue.Add(Field.GetCell().get(position + ViewField.GridSize - 1));
+                        queue.Add(Field.GetCell().get(position - ViewField.GridSize + 1));
+                        queue.Add(Field.GetCell().get(position + ViewField.GridSize + 1));
+                        queue.Add(Field.GetCell().get(position - 1));
+                        queue.Add(Field.GetCell().get(position + 1));
                     }
                 }
                 else if (cell.Type == 2)
@@ -107,53 +107,53 @@ namespace Delja_Alesja
                     {
                         if (position % ViewField.GridSize == 0)
                         {
-                            if (Field.getCell().get(position + ViewField.GridSize).getType() == 1)
+                            if (Field.GetCell().get(position + ViewField.GridSize).getType() == 1)
                             {
                                 dangerCount++;
                             }
-                            if (Field.getCell().get(position + ViewField.GridSize + 1).getType() == 1)
+                            if (Field.GetCell().get(position + ViewField.GridSize + 1).getType() == 1)
                             {
                                 dangerCount++;
                             }
-                            if (Field.getCell().get(position + 1).getType() == 1)
+                            if (Field.GetCell().get(position + 1).getType() == 1)
                             {
                                 dangerCount++;
                             }
                         }
                         else if (position % ViewField.GridSize == ViewField.GridSize - 1)
                         {
-                            if (Field.getCell().get(position + ViewField.GridSize).getType() == 1)
+                            if (Field.GetCell().get(position + ViewField.GridSize).getType() == 1)
                             {
                                 dangerCount++;
                             }
-                            if (Field.getCell().get(position + ViewField.GridSize - 1).getType() == 1)
+                            if (Field.GetCell().get(position + ViewField.GridSize - 1).getType() == 1)
                             {
                                 dangerCount++;
                             }
-                            if (Field.getCell().get(position - 1).getType() == 1)
+                            if (Field.GetCell().get(position - 1).getType() == 1)
                             {
                                 dangerCount++;
                             }
                         }
                         else
                         {
-                            if (Field.getCell().get(position + ViewField.GridSize).getType() == 1)
+                            if (Field.GetCell().get(position + ViewField.GridSize).getType() == 1)
                             {
                                 dangerCount++;
                             }
-                            if (Field.getCell().get(position + ViewField.GridSize + 1).getType() == 1)
+                            if (Field.GetCell().get(position + ViewField.GridSize + 1).getType() == 1)
                             {
                                 dangerCount++;
                             }
-                            if (Field.getCell().get(position + ViewField.GridSize - 1).getType() == 1)
+                            if (Field.GetCell().get(position + ViewField.GridSize - 1).getType() == 1)
                             {
                                 dangerCount++;
                             }
-                            if (Field.getCell().get(position + 1).getType() == 1)
+                            if (Field.GetCell().get(position + 1).getType() == 1)
                             {
                                 dangerCount++;
                             }
-                            if (Field.getCell().get(position - 1).getType() == 1)
+                            if (Field.GetCell().get(position - 1).getType() == 1)
                             {
                                 dangerCount++;
                             }
@@ -163,53 +163,53 @@ namespace Delja_Alesja
                     {
                         if (position % ViewField.GridSize == 0)
                         {
-                            if (Field.getCell().get(position - ViewField.GridSize).getType() == 1)
+                            if (Field.GetCell().get(position - ViewField.GridSize).getType() == 1)
                             {
                                 dangerCount++;
                             }
-                            if (Field.getCell().get(position - ViewField.GridSize + 1).getType() == 1)
+                            if (Field.GetCell().get(position - ViewField.GridSize + 1).getType() == 1)
                             {
                                 dangerCount++;
                             }
-                            if (Field.getCell().get(position + 1).getType() == 1)
+                            if (Field.GetCell().get(position + 1).getType() == 1)
                             {
                                 dangerCount++;
                             }
                         }
                         else if (position % ViewField.GridSize == ViewField.GridSize - 1)
                         {
-                            if (Field.getCell().get(position - ViewField.GridSize).getType() == 1)
+                            if (Field.GetCell().get(position - ViewField.GridSize).getType() == 1)
                             {
                                 dangerCount++;
                             }
-                            if (Field.getCell().get(position - ViewField.GridSize - 1).getType() == 1)
+                            if (Field.GetCell().get(position - ViewField.GridSize - 1).getType() == 1)
                             {
                                 dangerCount++;
                             }
-                            if (Field.getCell().get(position - 1).getType() == 1)
+                            if (Field.GetCell().get(position - 1).getType() == 1)
                             {
                                 dangerCount++;
                             }
                         }
                         else
                         {
-                            if (Field.getCell().get(position - ViewField.GridSize).getType() == 1)
+                            if (Field.GetCell().get(position - ViewField.GridSize).getType() == 1)
                             {
                                 dangerCount++;
                             }
-                            if (Field.getCell().get(position - ViewField.GridSize + 1).getType() == 1)
+                            if (Field.GetCell().get(position - ViewField.GridSize + 1).getType() == 1)
                             {
                                 dangerCount++;
                             }
-                            if (Field.getCell().get(position - ViewField.GridSize - 1).getType() == 1)
+                            if (Field.GetCell().get(position - ViewField.GridSize - 1).getType() == 1)
                             {
                                 dangerCount++;
                             }
-                            if (Field.getCell().get(position + 1).getType() == 1)
+                            if (Field.GetCell().get(position + 1).getType() == 1)
                             {
                                 dangerCount++;
                             }
-                            if (Field.getCell().get(position - 1).getType() == 1)
+                            if (Field.GetCell().get(position - 1).getType() == 1)
                             {
                                 dangerCount++;
                             }
@@ -217,81 +217,81 @@ namespace Delja_Alesja
                     }
                     else if (position % ViewField.GridSize == 0)
                     {
-                        if (Field.getCell().get(position - ViewField.GridSize).getType() == 1)
+                        if (Field.GetCell().get(position - ViewField.GridSize).getType() == 1)
                         {
                             dangerCount++;
                         }
-                        if (Field.getCell().get(position + ViewField.GridSize).getType() == 1)
+                        if (Field.GetCell().get(position + ViewField.GridSize).getType() == 1)
                         {
                             dangerCount++;
                         }
-                        if (Field.getCell().get(position - ViewField.GridSize + 1).getType() == 1)
+                        if (Field.GetCell().get(position - ViewField.GridSize + 1).getType() == 1)
                         {
                             dangerCount++;
                         }
-                        if (Field.getCell().get(position + ViewField.GridSize + 1).getType() == 1)
+                        if (Field.GetCell().get(position + ViewField.GridSize + 1).getType() == 1)
                         {
                             dangerCount++;
                         }
-                        if (Field.getCell().get(position + 1).getType() == 1)
+                        if (Field.GetCell().get(position + 1).getType() == 1)
                         {
                             dangerCount++;
                         }
                     }
                     else if (position % ViewField.GridSize == ViewField.GridSize - 1)
                     {
-                        if (Field.getCell().get(position - ViewField.GridSize).getType() == 1)
+                        if (Field.GetCell().get(position - ViewField.GridSize).getType() == 1)
                         {
                             dangerCount++;
                         }
-                        if (Field.getCell().get(position + ViewField.GridSize).getType() == 1)
+                        if (Field.GetCell().get(position + ViewField.GridSize).getType() == 1)
                         {
                             dangerCount++;
                         }
-                        if (Field.getCell().get(position - ViewField.GridSize - 1).getType() == 1)
+                        if (Field.GetCell().get(position - ViewField.GridSize - 1).getType() == 1)
                         {
                             dangerCount++;
                         }
-                        if (Field.getCell().get(position + ViewField.GridSize - 1).getType() == 1)
+                        if (Field.GetCell().get(position + ViewField.GridSize - 1).getType() == 1)
                         {
                             dangerCount++;
                         }
-                        if (Field.getCell().get(position - 1).getType() == 1)
+                        if (Field.GetCell().get(position - 1).getType() == 1)
                         {
                             dangerCount++;
                         }
                     }
                     else
                     {
-                        if (Field.getCell().get(position - ViewField.GridSize).getType() == 1)
+                        if (Field.GetCell().get(position - ViewField.GridSize).getType() == 1)
                         {
                             dangerCount++;
                         }
-                        if (Field.getCell().get(position + ViewField.GridSize).getType() == 1)
+                        if (Field.GetCell().get(position + ViewField.GridSize).getType() == 1)
                         {
                             dangerCount++;
                         }
-                        if (Field.getCell().get(position - ViewField.GridSize - 1).getType() == 1)
+                        if (Field.GetCell().get(position - ViewField.GridSize - 1).getType() == 1)
                         {
                             dangerCount++;
                         }
-                        if (Field.getCell().get(position + ViewField.GridSize - 1).getType() == 1)
+                        if (Field.GetCell().get(position + ViewField.GridSize - 1).getType() == 1)
                         {
                             dangerCount++;
                         }
-                        if (Field.getCell().get(position - ViewField.GridSize + 1).getType() == 1)
+                        if (Field.GetCell().get(position - ViewField.GridSize + 1).getType() == 1)
                         {
                             dangerCount++;
                         }
-                        if (Field.getCell().get(position + ViewField.GridSize + 1).getType() == 1)
+                        if (Field.GetCell().get(position + ViewField.GridSize + 1).getType() == 1)
                         {
                             dangerCount++;
                         }
-                        if (Field.getCell().get(position - 1).getType() == 1)
+                        if (Field.GetCell().get(position - 1).getType() == 1)
                         {
                             dangerCount++;
                         }
-                        if (Field.getCell().get(position + 1).getType() == 1)
+                        if (Field.GetCell().get(position + 1).getType() == 1)
                         {
                             dangerCount++;
                         }
@@ -301,14 +301,14 @@ namespace Delja_Alesja
                 else if (cell.Type == 1)
                 {
                     //posso toglierlo
-                    for (int x = 0; x < Field.getCell().size(); x++)
+                    for (int x = 0; x < Field.GetCell().size(); x++)
                     {
-                        Field.getCell().get(x).setEnabled(false);
-                        Field.getCell().get(x).setText("");
-                        if (Field.getCell().get(x).getType() == 1)
+                        Field.GetCell().get(x).setEnabled(false);
+                        Field.GetCell().get(x).setText("");
+                        if (Field.GetCell().get(x).getType() == 1)
                         {
-                            Field.getCell().get(x).setText("M");
-                            Field.getCell().get(x).setBackground(Color.red);
+                            Field.GetCell().get(x).setText("M");
+                            Field.GetCell().get(x).setBackground(Color.red);
                         }
                         ViewField.getFrame().setVisible(false);
                     }
@@ -333,9 +333,9 @@ namespace Delja_Alesja
                     temp.clickButton();
                 }
 
-                for (int x = 0; x < Field.getCell().size(); x++)
+                for (int x = 0; x < Field.GetCell().size(); x++)
                 {
-                    if (Field.getCell().get(x).isDiscovered())
+                    if (Field.GetCell().get(x).isDiscovered())
                     {
                         discovered++;
                         if (discovered == ViewField.GridSize * ViewField.GridSize)
@@ -345,21 +345,21 @@ namespace Delja_Alesja
                     }
                 }
 
-                if (discovered == Field.getCell().size() - ViewField.GridSize)
+                if (discovered == Field.GetCell().size() - ViewField.GridSize)
                 {
-                    for (int x = 0; x < Field.getCell().size(); x++)
+                    for (int x = 0; x < Field.GetCell().size(); x++)
                     {
-                        if (Field.getCell().get(x).getType() == 1)
+                        if (Field.GetCell().get(x).getType() == 1)
                         {
-                            Field.getCell().get(x).setEnabled(false);
-                            Field.getCell().get(x).setText("M");
-                            Field.getCell().get(x).setBackground(Color.red);
+                            Field.GetCell().get(x).setEnabled(false);
+                            Field.GetCell().get(x).setText("M");
+                            Field.GetCell().get(x).setBackground(Color.red);
                             ViewField.getFrame().setVisible(false);
                         }
                         else
                         {
-                            Field.getCell().get(x).setEnabled(false);
-                            Field.getCell().get(x).setText("");
+                            Field.GetCell().get(x).setEnabled(false);
+                            Field.GetCell().get(x).setText("");
                         }
                     }
                 }
