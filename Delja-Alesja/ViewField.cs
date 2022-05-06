@@ -1,18 +1,17 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-public class ViewField
+﻿namespace Delja_Alesja
 {
-    
-    private static int mines;
-    private static int gridSize;
-    public static int Mines => mines;
-    public static int GridSize => gridSize;
-
-    public ViewField(int gridSize, int mines)
+    class ViewField
     {
-        ViewField.mines = mines;
-        ViewField.gridSize = gridSize;
+
+        private static int mines;
+        private static int gridSize;
+        public static int Mines => mines;
+        public static int GridSize => gridSize;
+
+        public ViewField(int gridSize, int mines)
+        {
+            ViewField.mines = mines;
+            ViewField.gridSize = gridSize;
+        }
     }
 }
