@@ -20,12 +20,11 @@ namespace Delja_Alesja
          * Manca solo l'handler, il listener e i metodi usati dall'handler per i due modi di premere il bottone
          */
 
-        /**
-     *@return method that returns the type.
-     * - 0 if the cell is empty
-     * - 1 if there is a mine
-     * - 2 of there is a number
-     */
+        /* 
+         * - 0 if the cell is empty
+         * - 1 if there is a mine
+         * - 2 of there is a number
+         */
         public int Type => type;
         public int Position => position;
 
@@ -34,6 +33,9 @@ namespace Delja_Alesja
         public void SetDiscovered(bool discover) => this.discovered = discover;
         public bool Flagged => flagged;
         public void SetFlagged(bool flag) => this.flagged = flag;
+
+
+        //questa parte va nel test insieme a right click e click
         static void Main(string[] args)
         {
             Cell cell = new Cell(3,1,false,false);
