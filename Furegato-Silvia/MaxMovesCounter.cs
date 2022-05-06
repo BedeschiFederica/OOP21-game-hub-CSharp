@@ -10,17 +10,17 @@ namespace Furegato_Silvia
     class MaxMovesCounter
     {
 
-        private static final int MAX_MOVES_EASY = 16;
-        private static final int MAX_MOVES_MEDIUM = 28;
-        private static final int MAX_MOVES_HARD = 40;
-        private static final int SIZE_EASY = 5;
-        private static final int SIZE_MEDIUM = 10;
-        private static final int SIZE_HARD = 15;
-        private int size;
+        private static readonly int MAX_MOVES_EASY = 16;
+        private static readonly int MAX_MOVES_MEDIUM = 28;
+        private static readonly int MAX_MOVES_HARD = 40;
+        private static readonly int SIZE_EASY = 5;
+        private static readonly int SIZE_MEDIUM = 10;
+        private static readonly int SIZE_HARD = 15;
+        private int _size;
 
         public MaxMovesCounter(final int size)
         {
-            this.size = size;
+            _size = size;
         }
 
         /**
@@ -29,7 +29,7 @@ namespace Furegato_Silvia
         @Override
         public int count()
         {
-            switch (size)
+            switch (_size)
             {
                 case SIZE_EASY:
                     return MAX_MOVES_EASY;
@@ -47,9 +47,6 @@ namespace Furegato_Silvia
          * 
          * @param newSize The size for the count.
          */
-        public void setSize(final int newSize)
-        {
-            this.size = newSize;
-        }
+        public void setSize(final int newSize) => _size = newSize;
     }
 }

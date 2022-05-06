@@ -65,10 +65,7 @@ namespace Furegato_Silvia
         /**
             * @return The table.
             */
-        public Table getTable()
-        {
-            return _table;
-        }
+        public Table getTable() => _table;
 
         /**
             * @return The number of moves made by the player.
@@ -83,18 +80,12 @@ namespace Furegato_Silvia
         /**
             * @return The main puddle of color.
             */
-        public List<Cell> getMainPuddle()
-        {
-            return this.mainPuddle;
-        }
+        public List<Cell> getMainPuddle() => this.mainPuddle;
 
         /**
             * @return A list with all the colors of the table.
             */
-        public List<Colors> getSelectedColors()
-        {
-            return this.selectedColors;
-        }
+        public List<Colors> getSelectedColors() => this.selectedColors;
 
         /**
             * Reset the game model.
