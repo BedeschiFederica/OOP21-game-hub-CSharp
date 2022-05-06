@@ -9,57 +9,27 @@ namespace Furegato_Silvia
     */
     class FloodItModel
     {
-        private int numOfColors;
-        private int rowSize;
-        private Colors currentColor;
-        private Table table;
-        private int moves;
-        private int maxMoves;
-        private MovesCounter mCounter;
+        private int NumOfColors { get; set; }
+        private int RowSize { get; set; }
+        private Colors CurrentColor { get; set; }
+        private Table _table;
+        private int _moves;
+        private int _maxMoves;
+        private MovesCounter MCounter { get; set; }
         private final List<Cell> mainPuddle;
         private final List<Colors> selectedColors;
 
         public FloodItModel()
         {
-            this.numOfColors = 0;
-            this.rowSize = 0;
-            this.moves = 0;
-            this.maxMoves = 0;
-            this.mCounter = null;
-            this.currentColor = null;
-            this.table = null;
+            NumOfColors = 0;
+            RowSize = 0;
+            _moves = 0;
+            _maxMoves = 0;
+            MCounter = null;
+            CurrentColor = null;
+            _table = null;
             this.mainPuddle = new LinkedList<>();
             this.selectedColors = new LinkedList<>();
-        }
-
-        /**
-            * Sets the current color.
-            * 
-            * @param newColor The new color.
-            */
-        public void setCurrentColor(final Colors newColor)
-        {
-            this.currentColor = newColor;
-        }
-
-        /**
-            * Sets the number of rows of the table.
-            * 
-            * @param size The number of rows.
-            */
-        public void setTSize(final int size)
-        {
-            this.rowSize = size;
-        }
-
-        /**
-            * Sets the number of colors.
-            * 
-            * @param colorsNum The number of colors.
-            */
-        public void setNumofColors(final int colorsNum)
-        {
-            this.numOfColors = colorsNum;
         }
 
         /**
@@ -67,27 +37,14 @@ namespace Furegato_Silvia
             */
         public void setTable()
         {
-            this.table = new Table(rowSize, numOfColors, selectedColors);
-            table.generateTable();
+            _table = new Table(rowSize, numOfColors, selectedColors);
+            _table.generateTable();
         }
 
         /**
             * Set the maximum of moves the player can make.
             */
-        public void setMaxMoves()
-        {
-            this.maxMoves = this.mCounter.count();
-        }
-
-        /**
-            * Sets the maximum moves counter.
-            * 
-            * @param newCounter The moves counter.
-            */
-        public void setMCounter(final MovesCounter newCounter)
-        {
-            this.mCounter = newCounter;
-        }
+        public void setMaxMoves() => _maxMoves = MCounter.count();
 
         /**
             * Set the list of colors of the table.
@@ -103,66 +60,25 @@ namespace Furegato_Silvia
         /**
             * Increments the moves counter.
             */
-        public void incrementMoves()
-        {
-            this.moves++;
-        }
-
-        /**
-            * @return The number of colors used in the table.
-            */
-        public int getNumOfColors()
-        {
-            return this.numOfColors;
-        }
-
-        /**
-            * @return The number of rows.
-            */
-        public int getRowSize()
-        {
-            return this.rowSize;
-        }
-
-        /**
-            * @return The current color.
-            */
-        public Colors getCurrentColor()
-        {
-            return this.currentColor;
-        }
+        public void incrementMoves() => _moves++;
 
         /**
             * @return The table.
             */
         public Table getTable()
         {
-            return this.table;
+            return _table;
         }
 
         /**
             * @return The number of moves made by the player.
             */
-        public int getMoves()
-        {
-            return this.moves;
-        }
+        public int getMoves() => _moves;
 
         /**
             * @return The maximum number of moves.
             */
-        public int getMaxMoves()
-        {
-            return this.maxMoves;
-        }
-
-        /**
-            * @return The moves counter.
-            */
-        public MovesCounter getMCounter()
-        {
-            return this.mCounter;
-        }
+        public int getMaxMoves() => _maxMoves;
 
         /**
             * @return The main puddle of color.
@@ -185,16 +101,15 @@ namespace Furegato_Silvia
             */
         public void clear()
         {
-            this.numOfColors = 0;
-            this.rowSize = 0;
-            this.moves = 0;
-            this.maxMoves = 0;
-            this.mCounter = null;
-            this.currentColor = null;
-            this.table = null;
+            NumOfColors = 0;
+            RowSize = 0;
+            _moves = 0;
+            _maxMoves = 0;
+            MCounter = null;
+            CurrentColor = null;
+            _table = null;
             this.mainPuddle.clear();
             this.selectedColors.clear();
-        }
-        
+        }  
     }
 }
