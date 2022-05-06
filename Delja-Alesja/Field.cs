@@ -26,7 +26,7 @@ public class Field
 
     public void createCells(/*final Handler handler*/)
     {
-        for (int i = 1; i <= ViewField.getMines(); i++)
+        for (int i = 1; i <= ViewField.Mines; i++)
         {
             while (!mine)
             {
@@ -46,13 +46,13 @@ public class Field
             {
                 GetCell().Add(new Cell(1, i, false, false, handler));
             }
-            else if (i % ViewField.getGridSize() == 0)
+            else if (i % ViewField.GridSize == 0)
             {
-                if (mines.Contains(i - ViewField.getGridSize())
-                        || mines.Contains(i - ViewField.getGridSize() + 1)
+                if (mines.Contains(i - ViewField.GridSize)
+                        || mines.Contains(i - ViewField.GridSize + 1)
                         || mines.Contains(i + 1)
-                        || mines.Contains(i + ViewField.getGridSize())
-                        || mines.Contains(i + ViewField.getGridSize() + 1))
+                        || mines.Contains(i + ViewField.GridSize)
+                        || mines.Contains(i + ViewField.GridSize + 1))
                 {
                     GetCell().Add(new Cell(2, i, false, false, handler));
                 }
@@ -61,13 +61,13 @@ public class Field
                     GetCell().Add(new Cell(0, i, false, false, handler));
                 }
             }
-            else if (i % ViewField.getGridSize() == ViewField.getGridSize() - 1)
+            else if (i % ViewField.GridSize == ViewField.GridSize - 1)
             {
-                if (mines.Contains(i - ViewField.getGridSize() - 1)
-                        || mines.Contains(i - ViewField.getGridSize())
+                if (mines.Contains(i - ViewField.GridSize - 1)
+                        || mines.Contains(i - ViewField.GridSize)
                         || mines.Contains(i - 1)
-                        || mines.Contains(i + ViewField.getGridSize() - 1)
-                        || mines.Contains(i + ViewField.getGridSize()))
+                        || mines.Contains(i + ViewField.GridSize - 1)
+                        || mines.Contains(i + ViewField.GridSize))
                 {
                     GetCell().Add(new Cell(2, i, false, false, handler));
                 }
@@ -78,14 +78,14 @@ public class Field
             }
             else
             {
-                if (mines.Contains(i - ViewField.getGridSize() - 1)
-                        || mines.Contains(i - ViewField.getGridSize())
-                        || mines.Contains(i - ViewField.getGridSize() + 1)
+                if (mines.Contains(i - ViewField.GridSize - 1)
+                        || mines.Contains(i - ViewField.GridSize)
+                        || mines.Contains(i - ViewField.GridSize + 1)
                         || mines.Contains(i - 1)
                         || mines.Contains(i + 1)
-                        || mines.Contains(i + ViewField.getGridSize() - 1)
-                        || mines.Contains(i + ViewField.getGridSize())
-                        || mines.Contains(i + ViewField.getGridSize() + 1))
+                        || mines.Contains(i + ViewField.GridSize - 1)
+                        || mines.Contains(i + ViewField.GridSize)
+                        || mines.Contains(i + ViewField.GridSize + 1))
                 {
                     GetCell().Add(new Cell(2, i, false, false, handler));
                 }
