@@ -22,7 +22,7 @@ namespace Delja_Alesja {
              newCells();
          }*/
 
-        public void createCells(/*final Handler handler*/)
+        public void createCells( Handler handler)
         {
             for (int i = 1; i <= ViewField.Mines; i++)
             {

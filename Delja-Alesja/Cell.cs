@@ -4,17 +4,18 @@ namespace Delja_Alesja
 {
     class Cell
     {
-        private const int V = 0;
         private readonly int type;
         private readonly int position;
         private bool discovered;
         private bool flagged;
+        private readonly Handler handler;
 
-        public Cell(int type, int position, bool discovered, bool flagged) {
+        public Cell(int type, int position, bool discovered, bool flagged, Handler handler) {
             this.type = type;
             this.position = position;
             this.discovered = discovered;
             this.flagged = flagged;
+            this.handler = handler;
         }
         /*
          * Manca solo l'handler, il listener e i metodi usati dall'handler per i due modi di premere il bottone
