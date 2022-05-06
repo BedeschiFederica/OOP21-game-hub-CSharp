@@ -2,21 +2,12 @@
 
 namespace Furegato_Silvia
 {
+    /**
+    * This class represents a single cell and contains information about color, position,
+    * adjacent cells and whether the cell is flooded or not.
+    */
     class Cell
     {
-        package main.games.floodit.model;
-
-        import java.util.Arrays;
-        import java.util.LinkedList;
-        import java.util.List;
-
-        /**
-         * This class represents a single cell and contains information about color, position,
-         * adjacent cells and whether the cell is flooded or not.
-         */
-        public class Cell
-        {
-
             private Colors Color { get; set; }
             private Pair<Integer, Integer> Position { get; }
             private bool Flooded { get; set; }
@@ -59,6 +50,5 @@ namespace Furegato_Silvia
              */
             public List<Cell> GetAdjacentCells() => new LinkedList<>(Arrays.asList(topCell, bottomCell, rightCell, leftCell));
 
-        }
     }
 }
