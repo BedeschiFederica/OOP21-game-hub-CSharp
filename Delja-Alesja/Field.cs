@@ -8,11 +8,11 @@ namespace Delja_Alesja {
         //variable needed to know if a cell is picked to have a mine or not
         private bool mine;
         //array that has the position of all the mines
-        private List<int> mines = new ArrayList<>();
+        private List<int> mines = new List<int>();
         /**
          * array that has the position of all the cells.
         */
-        private static List<Cell> cell = new ArrayList<>();
+        private static List<Cell> cell = new List<Cell>();
 
         /* public Field(final GridLayout grid, final Handler handler)
          {
@@ -22,7 +22,7 @@ namespace Delja_Alesja {
              newCells();
          }*/
 
-        public void createCells( Handler handler)
+        public void CreateCells( Handler handler)
         {
             for (int i = 1; i <= ViewField.Mines; i++)
             {
@@ -98,7 +98,7 @@ namespace Delja_Alesja {
         /**
          * adding the cells to the field.
          */
-        private void newCells()
+        private void NewCells()
         {
             for (int i = 0; i < GetCell().size(); i++)
             {
@@ -108,6 +108,6 @@ namespace Delja_Alesja {
 
         public static List<Cell> GetCell() => cell;
 
-        public static void SetCell(final List<Cell> cell) => Field.cell = cell;
+        public static void SetCell(List<Cell> cell) => Field.cell = cell;
     }
 }

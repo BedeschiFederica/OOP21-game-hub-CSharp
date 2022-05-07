@@ -7,15 +7,15 @@ namespace Delja_Alesja
     class Handler
     {
         //array to know where is the player.
-        private  List<Cell> now = new ArrayList<>();
-        private  List<Cell> queue = new ArrayList<>();
+        private readonly List<Cell> now = new List<Cell>();
+        private readonly List<Cell> queue = new List<Cell>();
         private static int putFlag;
         /**
          * method that discovers the cells.
          * Remider: 0-empty, 1-mine, 2-flag
          * @param cell to know what cell is used
          */
-        public void click(Cell cell)
+        public void Click(Cell cell)
         {
             int discovered = 0;
             if (!cell.Flagged)
@@ -296,71 +296,29 @@ namespace Delja_Alesja
                             dangerCount++;
                         }
                     }
-                    cell.setText(String.valueOf(dangerCount));
-                }
-                else if (cell.Type == 1)
-                {
-                    //posso toglierlo
-                    for (int x = 0; x < Field.GetCell().size(); x++)
-                    {
-                        Field.GetCell().get(x).setEnabled(false);
-                        Field.GetCell().get(x).setText("");
-                        if (Field.GetCell().get(x).getType() == 1)
-                        {
-                            Field.GetCell().get(x).setText("M");
-                            Field.GetCell().get(x).setBackground(Color.red);
-                        }
-                        ViewField.getFrame().setVisible(false);
-                    }
-                    cell.setText("M");
-                    cell.setBackground(Color.red);
-                    result(false);
                 }
                 //forse fino a qui
                 for (int x = 0; x < queue.size(); x++)
                 {
                     if (!queue.get(x).isDiscovered())
                     {
-                        now.add(queue.get(x));
+                        now.Add(queue.get(x));
                         queue.get(x).setDiscovered(true);
                     }
                 }
-                queue.clear();
-                while (!now.isEmpty())
-                {
-                    final Cell temp = now.get(0);
-                    now.remove(0);
-                    temp.clickButton();
-                }
+                queue.Clear();
+                // while (!now.isEmpty())
+                //{
+                //  Cell temp = now.get(0);
+                //  now.remove(0);
+                //  temp.clickButton();
+                // }
 
                 for (int x = 0; x < Field.GetCell().size(); x++)
                 {
                     if (Field.GetCell().get(x).isDiscovered())
                     {
                         discovered++;
-                        if (discovered == ViewField.GridSize * ViewField.GridSize)
-                        {
-                            result(true);
-                        }
-                    }
-                }
-
-                if (discovered == Field.GetCell().size() - ViewField.GridSize)
-                {
-                    for (int x = 0; x < Field.GetCell().size(); x++)
-                    {
-                        if (Field.GetCell().get(x).getType() == 1)
-                        {
-                            Field.GetCell().get(x).setEnabled(false);
-                            Field.GetCell().get(x).setText("M");
-                            Field.GetCell().get(x).setBackground(Color.red);
-                            ViewField.getFrame().setVisible(false);
-                        }
-                        else
-                        {
-                            Field.GetCell().get(x).setEnabled(false);
-                            Field.GetCell().get(x).setText("");
-                        }
                     }
                 }
             }
@@ -370,7 +328,7 @@ namespace Delja_Alesja
          * method that puts the flag in the cell.
          * @param cell sets which cell is flagged.
          */
-        public void rightClick(Cell cell)
+        public void RightClick(Cell cell)
         {
             if (!cell.IsDiscovered)
             {
@@ -388,3 +346,4 @@ namespace Delja_Alesja
 
         }
     }
+}
