@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace Furegato_Silvia
 {
@@ -9,7 +10,7 @@ namespace Furegato_Silvia
     class Cell
     {
             private Colors Color { get; set; }
-            private Pair<Integer, Integer> Position { get; }
+            private Pair<int, int> Position { get; }
             private bool Flooded { get; set; }
 
             private Cell _topCell;
@@ -17,7 +18,7 @@ namespace Furegato_Silvia
             private Cell _rightCell;
             private Cell _leftCell;
 
-            public Cell(Colors color, Pair<Integer, Integer> position)
+            public Cell(Colors color, Pair<int, int> position)
             {
                 Color = color;
                 Position = position;
@@ -36,7 +37,7 @@ namespace Furegato_Silvia
              * @param right The cell on the right of the current one.
              * @param left The cell on the left of the current one.
              */
-            public void SetAdjacentCells(final Cell top, final Cell bottom, final Cell right, final Cell left)
+            public void SetAdjacentCells(Cell top, Cell bottom, Cell right, Cell left)
             {
                 _topCell = top;
                 _bottomCell = bottom;
@@ -48,7 +49,6 @@ namespace Furegato_Silvia
              * Gets the adjacent cells.
              * @return A list of the adjacent cells.
              */
-            public List<Cell> GetAdjacentCells() => new LinkedList<>(Arrays.asList(topCell, bottomCell, rightCell, leftCell));
-
+            public List<Cell> GetAdjacentCells() => new List<Cell>() { _topCell, _bottomCell, _rightCell, _leftCell };
     }
 }

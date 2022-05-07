@@ -15,9 +15,9 @@ namespace Furegato_Silvia
         private Table _table;
         private int _moves;
         private int _maxMoves;
-        private MovesCounter MCounter { get; set; }
-        private final List<Cell> mainPuddle;
-        private final List<Colors> selectedColors;
+        private IMovesCounter MCounter { get; set; }
+        private List<Cell> MainPuddle { get; }
+        private List<Colors> SelectedColors { get; }
 
         public FloodItModel()
         {
@@ -26,81 +26,74 @@ namespace Furegato_Silvia
             _moves = 0;
             _maxMoves = 0;
             MCounter = null;
-            CurrentColor = null;
             _table = null;
-            this.mainPuddle = new LinkedList<>();
-            this.selectedColors = new LinkedList<>();
+            MainPuddle = new List<Cell>();
+            SelectedColors = new List<Colors>();
         }
 
         /**
             * Creates an instance of the table.
             */
-        public void setTable()
+        public void SetTable()
         {
-            _table = new Table(rowSize, numOfColors, selectedColors);
-            _table.generateTable();
+            _table = new Table(RowSize, NumOfColors, SelectedColors);
+            _table.GenerateTable();
         }
 
         /**
             * Set the maximum of moves the player can make.
             */
-        public void setMaxMoves() => _maxMoves = MCounter.count();
+        public void SetMaxMoves() => _maxMoves = MCounter.count();
 
         /**
             * Set the list of colors of the table.
             * 
             * @param newColors The list of colors.
             */
-        public void setSelectedColors(final List<Colors> newColors)
+        public void SetSelectedColors(List<Colors> newColors)
         {
-            this.selectedColors.clear();
-            this.selectedColors.addAll(newColors);
+            SelectedColors.Clear();
+            SelectedColors.AddRange(newColors);
         }
 
         /**
             * Increments the moves counter.
             */
-        public void incrementMoves() => _moves++;
+        public void IncrementMoves() => _moves++;
 
         /**
             * @return The table.
             */
-        public Table getTable() => _table;
+        public Table GetTable() => _table;
 
         /**
             * @return The number of moves made by the player.
             */
-        public int getMoves() => _moves;
+        public int GetMoves() => _moves;
 
         /**
             * @return The maximum number of moves.
             */
-        public int getMaxMoves() => _maxMoves;
-
-        /**
-            * @return The main puddle of color.
-            */
-        public List<Cell> getMainPuddle() => this.mainPuddle;
+        public int GetMaxMoves() => _maxMoves;
 
         /**
             * @return A list with all the colors of the table.
             */
-        public List<Colors> getSelectedColors() => this.selectedColors;
+        public List<Colors> GetSelectedColors() => SelectedColors;
 
         /**
             * Reset the game model.
             */
-        public void clear()
+        public void Clear()
         {
             NumOfColors = 0;
             RowSize = 0;
             _moves = 0;
             _maxMoves = 0;
             MCounter = null;
-            CurrentColor = null;
             _table = null;
-            this.mainPuddle.clear();
-            this.selectedColors.clear();
+            MainPuddle.Clear();
+            SelectedColors.Clear();
         }  
     }
 }

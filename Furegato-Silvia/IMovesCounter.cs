@@ -7,11 +7,11 @@ namespace Furegato_Silvia
     /**
     * Interface of a moves calculator.
     */
-    interface MovesCounter
+    interface IMovesCounter
     {
         /**
         * @return The counted moves.
         */
-        int count();
+        int Count();
     }
 }

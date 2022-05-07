@@ -1,9 +1,64 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Windows.media.colors;
 
 namespace Furegato_Silvia
 {
+    struct MyColor
+    {
+        private int colorValue;
+        private string name;
+        private Color actualColor;
+    }
+
+    static public class ColorsExtension
+    {
+        /**
+         * Get a list of random colors of length n.
+         * 
+         * @param n The number of colors.
+         * @return A list of random colors.
+         */
+        public static List<Colors> GetRandomColors(this Colors c, final int n)
+        {
+
+            if (n > MAX_COLOR_NUMBER || n < MIN_COLOR_NUMBER)
+            {
+                throw new IllegalArgumentException("Input number was too large or too little. Try with a number between " + MIN_COLOR_NUMBER + " and " + MAX_COLOR_NUMBER);
+            }
+            else
+            {
+                List<Colors> result = new List<>(Arrays.asList(Colors.values())) { Enum.GetValues(typeof(Colors))};
+                for (int i = 0; i < (MAX_COLOR_NUMBER - n); i++)
+                {
+                    result.remove(RAND_COLOR.nextInt(MAX_COLOR_NUMBER - i));
+                }
+                return result;
+            }
+
+        }
+
+        /**
+         * Translate a color from a java.awt.Color type of color to a Colors color.
+         * 
+         * @param colorToTranslate The color you want to translate.
+         * @return Translated color.
+         */
+        public static Colors TranslateColor(this Colors c, final Color colorToTranslate)
+        {
+            List<Colors> colorsList = new List<>(Arrays.asList(Colors.values()));
+            List<Colors> requestedColor = colorsList.stream()
+                                                .filter(c->c.getActualColor().equals(colorToTranslate))
+                                                .collect(Collectors.toList());
+            if (requestedColor.IsEmpty())
+            {
+                return null;
+            }
+            return requestedColor.get(0);
+        }
+    }
+
     /**
     * Custom colors.
     */
@@ -51,91 +106,47 @@ namespace Furegato_Silvia
         MAGENTA(9, "Magenta", new Color(255, 0, 84));
 
         private static final int MAX_COLOR_NUMBER = 10;
-    private static final int MIN_COLOR_NUMBER = 0;
-    private static final Random RAND_COLOR = new Random();
-    private final int colorValue;
-    private final String name;
+        private static final int MIN_COLOR_NUMBER = 0;
+        private static final Random RAND_COLOR = new Random();
+        private final int colorValue;
+        private final string name;
         private final Color actualColor;
 
         Colors(final int number, final String name, final Color color)
-    {
-        this.colorValue = number;
-        this.name = name;
-        this.actualColor = color;
-    }
-
-    /**
-     * Get a list of random colors of length n.
-     * 
-     * @param n The number of colors.
-     * @return A list of random colors.
-     */
-    public static List<Colors> getRandomColors(final int n)
-    {
-
-        if (n > MAX_COLOR_NUMBER || n < MIN_COLOR_NUMBER)
         {
-            throw new IllegalArgumentException("Input number was too large or too little. Try with a number between " + MIN_COLOR_NUMBER + " and " + MAX_COLOR_NUMBER);
-        }
-        else
-        {
-            final List<Colors> result = new LinkedList<>(Arrays.asList(Colors.values()));
-            for (int i = 0; i < (MAX_COLOR_NUMBER - n); i++)
-            {
-                result.remove(RAND_COLOR.nextInt(MAX_COLOR_NUMBER - i));
-            }
-            return result;
+            this.colorValue = number;
+            this.name = name;
+            this.actualColor = color;
         }
 
-    }
-
-    /**
-     * Translate a color from a java.awt.Color type of color to a Colors color.
-     * 
-     * @param colorToTranslate The color you want to translate.
-     * @return Translated color.
-     */
-    public static Colors translateColor(final Color colorToTranslate)
-    {
-        final List<Colors> colorsList = new LinkedList<>(Arrays.asList(Colors.values()));
-        final List<Colors> requestedColor = colorsList.stream()
-                                            .filter(c->c.getActualColor().equals(colorToTranslate))
-                                            .collect(Collectors.toList());
-        if (requestedColor.isEmpty())
+        /**
+         * @return The number assigned to the color.
+         */
+        public int GetColorValue()
         {
-            return null;
+            return this.colorValue;
         }
-        return requestedColor.get(0);
-    }
 
-    /**
-     * @return The number assigned to the color.
-     */
-    public int getColorValue()
-    {
-        return this.colorValue;
-    }
+        /**
+         * @return The color's name.
+         */
+        public string GetName()
+        {
+            return this.name;
+        }
 
-    /**
-     * @return The color's name.
-     */
-    public String getName()
-    {
-        return this.name;
-    }
+        /**
+         * @return The java.awt.Color associated to the color.
+         */
+        public Color GetActualColor()
+        {
+            return this.actualColor;
+        }
 
-    /**
-     * @return The java.awt.Color associated to the color.
-     */
-    public Color getActualColor()
-    {
-        return this.actualColor;
+        @Override
+            public string ToString()
+        {
+            return this.name + ": " + this.colorValue + ", " + this.actualColor;
+        }
     }
-
-    @Override
-        public String toString()
-    {
-        return this.name + ": " + this.colorValue + ", " + this.actualColor;
-    }
-
 }

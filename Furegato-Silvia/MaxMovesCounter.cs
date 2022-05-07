@@ -7,18 +7,18 @@ namespace Furegato_Silvia
     /**
      * Counts the maximum moves allowed to flood the entire table.
      */
-    class MaxMovesCounter
+    class MaxMovesCounter : IMovesCounter
     {
 
-        private static readonly int MAX_MOVES_EASY = 16;
-        private static readonly int MAX_MOVES_MEDIUM = 28;
-        private static readonly int MAX_MOVES_HARD = 40;
-        private static readonly int SIZE_EASY = 5;
-        private static readonly int SIZE_MEDIUM = 10;
-        private static readonly int SIZE_HARD = 15;
+        private const int MAX_MOVES_EASY = 16;
+        private const int MAX_MOVES_MEDIUM = 28;
+        private const int MAX_MOVES_HARD = 40;
+        private const int SIZE_EASY = 5;
+        private const int SIZE_MEDIUM = 10;
+        private const int SIZE_HARD = 15;
         private int _size;
 
-        public MaxMovesCounter(final int size)
+        public MaxMovesCounter(int size)
         {
             _size = size;
         }
@@ -26,8 +26,7 @@ namespace Furegato_Silvia
         /**
          * Counts the max moves.
          */
-        @Override
-        public int count()
+        public int Count()
         {
             switch (_size)
             {
@@ -47,6 +46,6 @@ namespace Furegato_Silvia
          * 
          * @param newSize The size for the count.
          */
-        public void setSize(final int newSize) => _size = newSize;
+        public void SetSize(int newSize) => _size = newSize;
     }
 }

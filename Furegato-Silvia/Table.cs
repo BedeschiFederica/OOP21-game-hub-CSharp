@@ -9,35 +9,35 @@ namespace Furegato_Silvia
      */
     class Table
     {
-        private final int numOfColors;
-        private final int boardSize;
-        private final List<Colors> selectedColors;
-        private final List<Cell> board;
+        private readonly int _numOfColors;
+        private int BoardSize { get; }
+        private readonly List<Colors> _selectedColors;
+        private List<Cell> Board { get; }
 
-        public Table(final int tSize, final int colorsNumber, final List<Colors> selectedColors)
+        public Table(int tSize, int colorsNumber, List<Colors> selectedColors)
         {
-            this.numOfColors = colorsNumber;
-            this.boardSize = tSize;
-            this.selectedColors = selectedColors;
-            this.board = new LinkedList<>();
+            _numOfColors = colorsNumber;
+            BoardSize = tSize;
+            _selectedColors = selectedColors;
+            _board = new List<Cell>();
         }
 
         /**
             * Generates the table.
             */
-        public void generateTable()
+        public void GenerateTable()
         {
-            final Random rand = new Random();
-            final List<Colors> colorMap = new LinkedList<>();
+            Random rand = new Random();
+            List<Colors> colorMap = new List<Colors>();
 
             int chosenColor;
-            for (int i = 0; i < boardSize; i++)
+            for (int i = 0; i < BoardSize; i++)
             {
-                for (int j = 0; j < boardSize; j++)
+                for (int j = 0; j < BoardSize; j++)
                 {
-                    chosenColor = rand.nextInt(numOfColors);
-                    board.add(new Cell(selectedColors.get(chosenColor), new Pair<>(i, j)));
-                    colorMap.add(selectedColors.get(chosenColor));
+                    chosenColor = rand.nextInt(_numOfColors);
+                    _board.Add(new Cell(_selectedColors.get(chosenColor), new Pair<>(i, j)));
+                    colorMap.Add(_selectedColors.get(chosenColor));
                 }
             }
 
@@ -47,16 +47,16 @@ namespace Furegato_Silvia
             while (!colorMap.containsAll(selectedColors))
             {
                 pos = rand.nextInt(board.size());
-                color = rand.nextInt(numOfColors);
-                board.get(pos).setColor(selectedColors.get(color));
-                colorMap.remove(pos);
-                colorMap.add(pos, selectedColors.get(color));
+                color = rand.nextInt(_numOfColors);
+                _board.get(pos).setColor(selectedColors.get(color));
+                colorMap.Remove(pos);
+                colorMap.Add(pos, _selectedColors.get(color));
             }
 
             // Sets the adjacencies for all of the cells
-            for (int k = 0; k < board.size(); k++)
+            for (int k = 0; k < _board.size(); k++)
             {
-                setAdjacencies(k);
+                SetAdjacencies(k);
             }
 
         }
@@ -66,34 +66,34 @@ namespace Furegato_Silvia
             * 
             * @param cellPosition The position of the cell.
             */
-        private void setAdjacencies(final int cellPosition)
+        private void SetAdjacencies(int cellPosition)
         {
             Cell top = null;
             Cell bottom = null;
             Cell right = null;
             Cell left = null;
 
-            if ((cellPosition - boardSize) >= 0)
+            if ((cellPosition - BoardSize) >= 0)
             {
-                top = board.get(cellPosition - boardSize);
+                top = _board.get(cellPosition - BoardSize);
             }
 
-            if ((cellPosition + boardSize) < board.size())
+            if ((cellPosition + BoardSize) < _board.size())
             {
-                bottom = board.get(cellPosition + boardSize);
+                bottom = _board.get(cellPosition + BoardSize);
             }
 
-            if ((cellPosition + 1) < board.size() && board.get(cellPosition + 1).getPosition().getY() != 0)
+            if ((cellPosition + 1) < _board.size() && _board.get(cellPosition + 1).getPosition().getY() != 0)
             {
-                right = board.get(cellPosition + 1);
+                right = _board.get(cellPosition + 1);
             }
 
-            if ((cellPosition - 1) >= 0 && board.get(cellPosition - 1).getPosition().getY() != boardSize - 1)
+            if ((cellPosition - 1) >= 0 && _board.get(cellPosition - 1).getPosition().getY() != BoardSize - 1)
             {
-                left = board.get(cellPosition - 1);
+                left = _board.get(cellPosition - 1);
             }
 
-            board.get(cellPosition).setAdjacentCells(top, bottom, right, left);
+            _board.get(cellPosition).setAdjacentCells(top, bottom, right, left);
         }
 
         /**
@@ -103,9 +103,9 @@ namespace Furegato_Silvia
             * @param y Y position of the cell.
             * @return the cell at position (x,y).
             */
-        public Cell getCell(final int x, final int y)
+        public Cell GetCell(int x, int y)
         {
-            final List<Cell> requestedCell = board.stream()
+            List<Cell> requestedCell = _board.stream()
                     .filter(cell->cell.getPosition().equals(new Pair<Integer, Integer>(x, y)))
                     .collect(Collectors.toList());
             if (requestedCell.isEmpty())
@@ -118,18 +118,6 @@ namespace Furegato_Silvia
         /**
             * @return All of the cells contained in the table.
             */
-        public List<Cell> getAllCells()
-        {
-            return this.board;
-        }
-
-        /**
-            * @return The board rows number.
-            */
-        public int getBoardSize()
-        {
-            return this.boardSize;
-        }
-        
+        public List<Cell> GetAllCells() => _board;  
     }
 }

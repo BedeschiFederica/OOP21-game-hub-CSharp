@@ -10,35 +10,31 @@ namespace Furegato_Silvia
      */
     class Pair<X, Y>
     {
-    private X Xpos { get; }
-    private Y Ypos { get; }
+    private X First { get; }
+    private Y Second { get; }
 
         public Pair(X x, Y y)
         {
-            super();
-            Xpos = x;
-            Ypos = y;
+            First = x;
+            Second = y;
         }
 
         /**
-            * {@inheritDoc}
-            */
-        @Override
-        public int hashCode()
+        * {@inheritDoc}
+        */
+        public override int GetHashCode()
         {
-            final int prime = 31;
+            int prime = 31;
             int result = 1;
-            result = prime * result + ((x == null) ? 0 : x.hashCode());
-            result = prime * result + ((y == null) ? 0 : y.hashCode());
+            result = prime * result + ((First == null) ? 0 : First.GetHashCode());
+            result = prime * result + ((Second == null) ? 0 : Second.GetHashCode());
             return result;
         }
 
         /**
-            * {@inheritDoc}
-            */
-        @SuppressWarnings("rawtypes")
-        @Override
-        public boolean equals(final Object obj)
+        * {@inheritDoc}
+        */
+        public override bool Equals(Object obj)
         {
             if (this == obj)
             {
@@ -52,26 +48,26 @@ namespace Furegato_Silvia
             {
                 return false;
             }
-            final Pair other = (Pair)obj;
-            if (x == null)
+            Pair other = (Pair)obj;
+            if (First == null)
             {
                 if (other.x != null)
                 {
                     return false;
                 }
             }
-            else if (!x.equals(other.x))
+            else if (!First.Equals(other.First))
             {
                 return false;
             }
-            if (y == null)
+            if (Second == null)
             {
                 if (other.y != null)
                 {
                     return false;
                 }
             }
-            else if (!y.equals(other.y))
+            else if (!Second.Equals(other.Second))
             {
                 return false;
             }
@@ -81,10 +77,9 @@ namespace Furegato_Silvia
         /**
         * {@inheritDoc}
         */
-        @Override
-        public String toString()
+        public override string ToString()
         {
-            return "Pair [x=" + x + ", y=" + y + "]";
+            return "Pair [x=" + First + ", y=" + Second + "]";
         }
     }
 }
