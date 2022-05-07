@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace Bedeschi_Federica
+﻿namespace Bedeschi_Federica
 {
     /// <summary>
     /// Interface that represents a block that can be linked to another block.
@@ -37,17 +33,11 @@ namespace Bedeschi_Federica
 
         /// <summary>
         /// Adds a link in the given direction.
-        /// Note: you should call the method canLink() before calling this one, otherwise
-        /// you'll get an IllegalStateException if the two blocks can't link.
+        /// Note: you should call the method canLink() before calling this one.
         /// </summary>
         /// <param name="direction"> the direction of the link </param>
         void AddLink(Direction direction);
 
-        /**
-            * 
-            * @param direction
-            *          the direction of the link
-            */
         /// <summary>
         /// Links the block in the given direction.
         /// If the maximum number of links in the given direction is reached,
