@@ -8,20 +8,15 @@ namespace Delja_Alesja
         private readonly int position;
         private bool discovered;
         private bool flagged;
-        private readonly Handler handler;
 
-        public Cell(int type, int position, bool discovered, bool flagged, Handler handler) {
+        public Cell(int type, int position, bool discovered, bool flagged) {
             this.type = type;
             this.position = position;
             this.discovered = discovered;
             this.flagged = flagged;
-            this.handler = handler;
         }
-        /*
-         * Manca solo l'handler, il listener e i metodi usati dall'handler per i due modi di premere il bottone
-         */
 
-        /* 
+        /* Type:
          * - 0 if the cell is empty
          * - 1 if there is a mine
          * - 2 of there is a number
