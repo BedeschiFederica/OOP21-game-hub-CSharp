@@ -105,7 +105,7 @@ namespace Furegato_Silvia
         */
         public Cell GetCell(int x, int y)
         {
-            List<Cell> requestedCell = new List<Cell>();
+            List<Cell> requestedCell = new List<Cell>(Board);
             requestedCell.Where(cell => cell.Position.Equals(new Tuple<int, int>(x, y)))
                          .Take(1);
 
