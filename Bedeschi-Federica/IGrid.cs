@@ -18,6 +18,12 @@ namespace Bedeschi_Federica
         Dictionary<IPosition, IBlock> Blocks { get; }
 
         /// <summary>
+        /// Tells if the grid is complete.
+        /// Every block needs to have the number of currents links equal to their maximum one.
+        /// </summary>
+        bool IsComplete { get; }
+
+        /// <summary>
         /// Tells if the given position is legal or not.
         /// To be legal it has to be in range 0 - Size.
         /// </summary>
@@ -74,13 +80,6 @@ namespace Bedeschi_Federica
         /// <param name="pos2"> the position of the second block </param>
         /// <returns> the number of links between the two blocks </returns>
         int GetLinks(IPosition pos1, IPosition pos2);
-
-        /// <summary>
-        /// Tells if the grid is complete.
-        /// Every block needs to have the number of currents links equal to their maximum one.
-        /// </summary>
-        /// <returns> true if the grid is complete. </returns>
-        bool IsComplete();
 
     }
 }

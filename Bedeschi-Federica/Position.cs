@@ -15,9 +15,9 @@ namespace Bedeschi_Federica
 
         /// <summary>
         /// Builds a new Position.
+        /// </summary>
         /// <param name="x"> its x coordinate </param>
         /// <param name="y"> its y coordinate </param>
-        /// </summary>
         public Position(int x, int y)
         {
             X = x;
@@ -26,7 +26,7 @@ namespace Bedeschi_Federica
 
         /// <inheritdoc/>
         public override bool Equals(object obj) =>
-            obj is Position position && X == position.X && Y == position.Y;
+            obj is IPosition position && X == position.X && Y == position.Y;
 
         /// <inheritdoc/>
         public override int GetHashCode() => HashCode.Combine(X, Y);

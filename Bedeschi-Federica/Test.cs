@@ -1,20 +1,18 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
+using System.Linq;
 using NUnit.Framework;
 
 namespace Bedeschi_Federica
 {
+    /// <summary>
+    /// Class that represents a NUnit test for the Numerical bond game's model.
+    /// </summary>
     [TestFixture]
     public class Test
     {
         private const int LINKS_PER_BLOCK = 5;
         private const int GRID_SIZE = 3;
-
-        [SetUp]
-        public void Setup()
-        {
-        }
 
         /// <summary>
         /// Test if the block returns the correct number of current links.
@@ -55,7 +53,7 @@ namespace Bedeschi_Federica
         ///       shouldn't be changed.
         /// </summary>
         [Test]
-        public void TestIllegalLinkAddition()
+        public void TestBlockIllegalLinkAddition()
         {
             IBlock block = new Block(LINKS_PER_BLOCK);
             block.AddLink(Direction.Right);
@@ -156,6 +154,22 @@ namespace Bedeschi_Federica
             Assert.Throws<ArgumentException>(() => grid.Link(new Position(2, -1), new Position(0, 0)));
             Assert.Throws<ArgumentException>(() => grid.GetLinks(null, new Position(0, 0)));
             Assert.Throws<ArgumentException>(() => grid.GetLinks(new Position(0, 0), new Position(3, 1)));
+        }
+
+        /// <summary>
+        /// Test if the grid tells correctly when it's complete or not.
+        /// </summary>
+        [Test]
+        public void TestGridComplete()
+        {
+            IGrid grid = new Grid(GRID_SIZE);
+            Assert.False(grid.IsComplete);
+            Dictionary<IPosition, IBlock> blocks = new Dictionary<IPosition, IBlock>();
+            Enumerable.Range(0, GRID_SIZE).ToList()
+                .ForEach(i => Enumerable.Range(0, GRID_SIZE).ToList()
+                    .ForEach(j => blocks[new Position(i, j)] = new Block(0)));
+            grid = new Grid(GRID_SIZE, blocks);
+            Assert.True(grid.IsComplete);
         }
 
     }

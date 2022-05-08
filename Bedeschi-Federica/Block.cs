@@ -12,7 +12,7 @@ namespace Bedeschi_Federica
         private const int DEFAULT_LINKS_PER_SIDE = 0;
         private const int MAX_LINKS_PER_SIDE = 2;
 
-        private IDictionary<Direction, int> _linksPerSide;
+        private readonly IDictionary<Direction, int> _linksPerSide;
 
         /// <inheritdoc/>
         public int LinksToHave { get; }
@@ -67,7 +67,7 @@ namespace Bedeschi_Federica
 
         /// <inheritdoc/>
         public override string ToString() =>
-            "Block [LinksToHave=" + LinksToHave+ ", LinksPerSide=" + _linksPerSide + "]";
+            "Block [linksToHave=" + LinksToHave + "]";
 
     }
 }

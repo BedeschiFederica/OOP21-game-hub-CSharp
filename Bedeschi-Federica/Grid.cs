@@ -17,6 +17,9 @@ namespace Bedeschi_Federica
         /// <inheritdoc/>
         public Dictionary<IPosition, IBlock> Blocks { get; }
 
+        /// <inheritdoc/>
+        public bool IsComplete { get => !Blocks.Values.ToList().Any(b => b.CurrentLinks != b.LinksToHave); }
+
         /// <summary>
         /// Builds a new Grid.
         /// </summary>
@@ -37,12 +40,8 @@ namespace Bedeschi_Federica
         /// <param name="blocks"> the dictionary of the blocks that the grid will have </param>
         public Grid(int size, Dictionary<IPosition, IBlock> blocks)
         {
-            if (blocks == null)
-            {
-                throw new ArgumentNullException(nameof(blocks));
-            }
             Size = size;
-            Blocks = blocks;
+            Blocks = blocks ?? throw new ArgumentNullException(nameof(blocks));
         }
 
         /// <inheritdoc/>
@@ -118,23 +117,10 @@ namespace Bedeschi_Federica
         {
             Direction directionFrom1To2 = GetDirection(pos1, pos2);
             return Blocks[pos1].GetLinks(directionFrom1To2);
-        }
+        }        
 
         /// <inheritdoc/>
-        public bool IsComplete()
-        {
-            foreach (Block b in Blocks.Values)
-            {
-                if (b.CurrentLinks != b.LinksToHave)
-                {
-                    return false;
-                }
-            }
-            return true;
-        }
-
-        /// <inheritdoc/>
-        public override string ToString() => "Grid [size=" + Size + ", blocks=" + Blocks + "]";
+        public override string ToString() => "Grid [size=" + Size + "]";
 
     }
 }
