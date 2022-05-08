@@ -1,8 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 using NUnit.Framework;
-using System.Web.UI;
 
 namespace Furegato_Silvia
 {
@@ -71,7 +68,7 @@ namespace Furegato_Silvia
             Assert.NotNull(bottom);
             Assert.NotNull(right);
             Assert.Null(left);
-
+            Assert.Null(t.GetCell(-1, 40));
         }
 
         [Test]
