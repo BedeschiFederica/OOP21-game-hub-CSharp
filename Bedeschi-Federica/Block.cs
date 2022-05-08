@@ -22,8 +22,8 @@ namespace Bedeschi_Federica
 
         /// <summary>
         /// Builds a new Block.
-        /// <param name="linksToHave"> the total number of links that the block will have to have </param>
         /// </summary>
+        /// <param name="linksToHave"> the total number of links that the block will have to have </param>
         public Block(int linksToHave)
         {
             LinksToHave = linksToHave;

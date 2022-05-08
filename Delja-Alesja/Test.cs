@@ -41,9 +41,5 @@ namespace Delja_Alesja
             Assert.AreEqual(cell, Field.GetCell());
         }
 
-        static void Main()
-        {
-            Console.WriteLine("Classe di test");
-        }
     }
 }

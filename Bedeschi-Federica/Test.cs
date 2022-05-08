@@ -63,5 +63,100 @@ namespace Bedeschi_Federica
             Assert.AreEqual(2, block.CurrentLinks);
             Assert.Throws<InvalidOperationException>(() => block.AddLink(Direction.Right));
         }
+
+        /// <summary>
+        /// Test if the grid recognizes legal or illegal positions.
+        /// </summary>
+        [Test]
+        public void TestGridPositions()
+        {
+            IGrid grid = new Grid(GRID_SIZE);
+            Assert.True(grid.IsLegal(new Position(0, 0)));
+            Assert.True(grid.IsLegal(new Position(2, 2)));
+            Assert.True(grid.IsLegal(new Position(1, 0)));
+            Assert.True(grid.IsLegal(new Position(2, 1)));
+            Assert.False(grid.IsLegal(new Position(-1, 0)));
+            Assert.False(grid.IsLegal(new Position(1, -1)));
+            Assert.False(grid.IsLegal(new Position(2, 3)));
+            Assert.False(grid.IsLegal(new Position(4, 2)));
+            Assert.False(grid.IsLegal(null));
+        }
+
+        /// <summary>
+        /// Test if the grid returns the correct nearby positions.
+        /// </summary>
+        [Test]
+        public void TestGridNearbyPositions()
+        {
+            IGrid grid = new Grid(GRID_SIZE);
+            Assert.AreEqual(new Position(0, 1), grid.GetNearbyPosition(new Position(0, 0), Direction.Right));
+            Assert.AreEqual(new Position(1, 1), grid.GetNearbyPosition(new Position(1, 2), Direction.Left));
+            Assert.AreEqual(new Position(1, 2), grid.GetNearbyPosition(new Position(2, 2), Direction.Up));
+            Assert.Throws<InvalidOperationException>(
+                () => grid.GetNearbyPosition(new Position(0, 0), Direction.Up));
+            Assert.Throws<InvalidOperationException>(
+                () => grid.GetNearbyPosition(new Position(1, 0), Direction.Left));
+            Assert.Throws<InvalidOperationException>(
+                () => grid.GetNearbyPosition(new Position(2, 1), Direction.Down));
+        }
+
+        /// <summary>
+        /// Test if the grid returns the correct direction from one position to another.
+        /// </summary>
+        [Test]
+        public void TestGridDirections()
+        {
+            IGrid grid = new Grid(GRID_SIZE);
+            Assert.AreEqual(Direction.Right, grid.GetDirection(new Position(0, 0), new Position(0, 1)));
+            Assert.AreEqual(Direction.Left, grid.GetDirection(new Position(0, 1), new Position(0, 0)));
+            Assert.AreEqual(Direction.Down, grid.GetDirection(new Position(1, 2), new Position(2, 2)));
+            Assert.Throws<InvalidOperationException>(
+                () => grid.GetDirection(new Position(0, 0), new Position(1, 1)));
+            Assert.Throws<InvalidOperationException>(
+                () => grid.GetDirection(new Position(2, 0), new Position(0, 2)));
+            Assert.Throws<InvalidOperationException>(
+                () => grid.GetDirection(new Position(1, 0), new Position(1, 2)));
+        }
+
+        /// <summary>
+        /// Test if the grid returns the correct number of links between two blocks.
+        /// </summary>
+        [Test]
+        public void TestGridLinks()
+        {
+            IGrid grid = new Grid(GRID_SIZE);
+            grid.Link(new Position(0, 0), new Position(0, 1));
+            Assert.AreEqual(1, grid.GetLinks(new Position(0, 0), new Position(0, 1)));
+            grid.Link(new Position(0, 0), new Position(0, 1));
+            Assert.AreEqual(2, grid.GetLinks(new Position(0, 0), new Position(0, 1)));
+            grid.Link(new Position(0, 0), new Position(0, 1));
+            Assert.AreEqual(0, grid.GetLinks(new Position(0, 0), new Position(0, 1)));
+            grid.Link(new Position(1, 1), new Position(2, 1));
+            grid.Link(new Position(1, 1), new Position(2, 1));
+            Assert.AreEqual(2, grid.GetLinks(new Position(1, 1), new Position(2, 1)));
+        }
+
+        /// <summary>
+        /// Test if the grid works correctly if it receives illegal inputs (null objects or illegal positions).
+        /// </summary>
+        [Test]
+        public void TestGridIllegalInputs()
+        {
+            Assert.Throws<ArgumentNullException>(() => new Grid(3, null));
+            IGrid grid = new Grid(GRID_SIZE);
+            Assert.Throws<ArgumentException>(() => grid.GetBlockAt(null));
+            Assert.Throws<ArgumentException>(() => grid.GetBlockAt(new Position(3, 0)));
+            Assert.Throws<ArgumentException>(() => grid.GetNearbyPosition(new Position(0, -1), Direction.Up));
+            Assert.Throws<ArgumentException>(() => grid.GetNearbyPosition(new Position(4, 1), Direction.Up));
+            Assert.Throws<ArgumentException>(() => grid.GetDirection(new Position(1, 4), new Position(0, 0)));
+            Assert.Throws<ArgumentException>(() => grid.GetDirection(new Position(0, 0), null));
+            Assert.Throws<ArgumentException>(() => grid.CanLink(null, new Position(0, 0)));
+            Assert.Throws<ArgumentException>(() => grid.CanLink(new Position(0, 0), new Position(-1, 1)));
+            Assert.Throws<ArgumentException>(() => grid.Link(new Position(0, 0), null));
+            Assert.Throws<ArgumentException>(() => grid.Link(new Position(2, -1), new Position(0, 0)));
+            Assert.Throws<ArgumentException>(() => grid.GetLinks(null, new Position(0, 0)));
+            Assert.Throws<ArgumentException>(() => grid.GetLinks(new Position(0, 0), new Position(3, 1)));
+        }
+
     }
 }
