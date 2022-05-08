@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using System.Windows.media.colors;
 
 namespace Furegato_Silvia
 {
@@ -9,7 +8,7 @@ namespace Furegato_Silvia
     {
         private int colorValue;
         private string name;
-        private Color actualColor;
+        //private Color actualColor;
     }
 
     static public class ColorsExtension
@@ -20,7 +19,7 @@ namespace Furegato_Silvia
          * @param n The number of colors.
          * @return A list of random colors.
          */
-        public static List<Colors> GetRandomColors(this Colors c, final int n)
+        /*public static List<Colors> GetRandomColors(this Colors c, final int n)
         {
 
             if (n > MAX_COLOR_NUMBER || n < MIN_COLOR_NUMBER)
@@ -37,7 +36,7 @@ namespace Furegato_Silvia
                 return result;
             }
 
-        }
+        }*/
 
         /**
          * Translate a color from a java.awt.Color type of color to a Colors color.
@@ -45,7 +44,7 @@ namespace Furegato_Silvia
          * @param colorToTranslate The color you want to translate.
          * @return Translated color.
          */
-        public static Colors TranslateColor(this Colors c, final Color colorToTranslate)
+        /*public static Colors TranslateColor(this Colors c, final Color colorToTranslate)
         {
             List<Colors> colorsList = new List<>(Arrays.asList(Colors.values()));
             List<Colors> requestedColor = colorsList.stream()
@@ -56,7 +55,7 @@ namespace Furegato_Silvia
                 return null;
             }
             return requestedColor.get(0);
-        }
+        }*/
     }
 
     /**
@@ -67,45 +66,45 @@ namespace Furegato_Silvia
         /**
         * Red color.
         */
-        RED(0, "Red", new Color(255, 0, 0)),
+        //RED(0, "Red", new Color(255, 0, 0)),
         /**
          * Orange color.
          */
-        ORANGE(1, "Orange", new Color(255, 135, 0)),
+        //ORANGE(1, "Orange", new Color(255, 135, 0)),
         /**
          * Yellow color.
          */
-        YELLOW(2, "Yellow", new Color(255, 211, 0)),
+        //YELLOW(2, "Yellow", new Color(255, 211, 0)),
         /**
          * Lime color.
          */
-        LIME(3, "Lime", new Color(222, 255, 10)),
+        //LIME(3, "Lime", new Color(222, 255, 10)),
         /**
          * Green color.
          */
-        GREEN(4, "Green", new Color(161, 255, 10)),
+        //GREEN(4, "Green", new Color(161, 255, 10)),
         /**
          * Light blue color.
          */
-        LIGHT_BLUE(5, "Light Blue", new Color(10, 239, 255)),
+       // LIGHT_BLUE(5, "Light Blue", new Color(10, 239, 255)),
         /**
          * Blue color.
          */
-        BLUE(6, "Blue", new Color(20, 125, 245)),
+       //BLUE(6, "Blue", new Color(20, 125, 245)),
         /**
          * Indigo color.
          */
-        INDIGO(7, "Indigo", new Color(88, 10, 255)),
+        //INDIGO(7, "Indigo", new Color(88, 10, 255)),
         /**
          * Purple color.
          */
-        PURPLE(8, "Purple", new Color(190, 10, 255)),
+        //PURPLE(8, "Purple", new Color(190, 10, 255)),
         /**
          * Magenta color.
          */
-        MAGENTA(9, "Magenta", new Color(255, 0, 84));
+        //MAGENTA(9, "Magenta", new Color(255, 0, 84));
 
-        private static final int MAX_COLOR_NUMBER = 10;
+        /*private static final int MAX_COLOR_NUMBER = 10;
         private static final int MIN_COLOR_NUMBER = 0;
         private static final Random RAND_COLOR = new Random();
         private final int colorValue;
@@ -117,36 +116,35 @@ namespace Furegato_Silvia
             this.colorValue = number;
             this.name = name;
             this.actualColor = color;
-        }
+        }*/
 
         /**
          * @return The number assigned to the color.
          */
-        public int GetColorValue()
+        /*public int GetColorValue()
         {
             return this.colorValue;
-        }
+        }*/
 
         /**
          * @return The color's name.
          */
-        public string GetName()
+       /*public string GetName()
         {
             return this.name;
-        }
+        }*/
 
         /**
          * @return The java.awt.Color associated to the color.
          */
-        public Color GetActualColor()
+        /*public Color GetActualColor()
         {
             return this.actualColor;
-        }
+        }*/
 
-        @Override
-            public string ToString()
+        /*public override string ToString()
         {
             return this.name + ": " + this.colorValue + ", " + this.actualColor;
-        }
+        }*/
     }
 }

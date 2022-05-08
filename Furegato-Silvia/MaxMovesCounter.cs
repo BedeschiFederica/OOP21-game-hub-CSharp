@@ -1,11 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
+﻿
 namespace Furegato_Silvia
 {
     /**
-     * Counts the maximum moves allowed to flood the entire table.
+     * <summary>Class <c>MaxMovesCounter</c> counts the maximum moves allowed to flood the entire table.</summary>
      */
     class MaxMovesCounter : IMovesCounter
     {
@@ -24,7 +21,7 @@ namespace Furegato_Silvia
         }
 
         /**
-         * Counts the max moves.
+         * <returns>Method <c>Count</c> returns the maximum moves.</returns>
          */
         public int Count()
         {
@@ -42,9 +39,9 @@ namespace Furegato_Silvia
         }
 
         /**
-         * Sets the size for the maximum moves count.
+         * <summary>Method <c>SetSize</c> sets the size for the maximum moves count.</summary>
          * 
-         * @param newSize The size for the count.
+         * <param name="newSize">The size for the moves count.</param>
          */
         public void SetSize(int newSize) => _size = newSize;
     }

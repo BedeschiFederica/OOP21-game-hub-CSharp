@@ -1,30 +1,30 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
+using System.Linq;
 
 namespace Furegato_Silvia
 {
-     /**
-     * Describes the table of the game, contains cells.
-     */
+    /**
+    * <summary>Class <c>Table</c> describes the table of the game, contains cells.</summary>
+    */
     class Table
     {
+        public int BoardSize { get; }
+        public List<Cell> Board { get; }
         private readonly int _numOfColors;
-        private int BoardSize { get; }
         private readonly List<Colors> _selectedColors;
-        private List<Cell> Board { get; }
 
         public Table(int tSize, int colorsNumber, List<Colors> selectedColors)
         {
-            _numOfColors = colorsNumber;
             BoardSize = tSize;
+            Board = new List<Cell>();
+            _numOfColors = colorsNumber;
             _selectedColors = selectedColors;
-            _board = new List<Cell>();
         }
 
         /**
-            * Generates the table.
-            */
+        * <summary>Method <c>GenerateTable</c> generates the table.</summary>
+        */
         public void GenerateTable()
         {
             Random rand = new Random();
@@ -35,26 +35,26 @@ namespace Furegato_Silvia
             {
                 for (int j = 0; j < BoardSize; j++)
                 {
-                    chosenColor = rand.nextInt(_numOfColors);
-                    _board.Add(new Cell(_selectedColors.get(chosenColor), new Pair<>(i, j)));
-                    colorMap.Add(_selectedColors.get(chosenColor));
+                    chosenColor = rand.Next(_numOfColors);
+                    Board.Add(new Cell(_selectedColors[chosenColor], new Tuple<int, int>(i, j)));
+                    colorMap.Add(_selectedColors[chosenColor]);
                 }
             }
 
             // checks if the table contains all the requested colors
             int pos;
             int color;
-            while (!colorMap.containsAll(selectedColors))
+            while (!_selectedColors.All(selC => colorMap.Any(c => c == selC)))
             {
-                pos = rand.nextInt(board.size());
-                color = rand.nextInt(_numOfColors);
-                _board.get(pos).setColor(selectedColors.get(color));
-                colorMap.Remove(pos);
-                colorMap.Add(pos, _selectedColors.get(color));
+                pos = rand.Next(Board.Count());
+                color = rand.Next(_numOfColors);
+                Board[pos].Color = _selectedColors[color];
+                colorMap.Remove(colorMap[pos]);
+                colorMap.Insert(pos, _selectedColors[color]);
             }
 
             // Sets the adjacencies for all of the cells
-            for (int k = 0; k < _board.size(); k++)
+            for (int k = 0; k < Board.Count; k++)
             {
                 SetAdjacencies(k);
             }
@@ -62,10 +62,10 @@ namespace Furegato_Silvia
         }
 
         /**
-            * Finds and sets the adjacent cells.
-            * 
-            * @param cellPosition The position of the cell.
-            */
+        * <summary>Method <c>SetAdjacencies</c> finds and sets the adjacent cells.</summary>
+        * 
+        * <param name="cellPosition">The position of the cell.</param>
+        */
         private void SetAdjacencies(int cellPosition)
         {
             Cell top = null;
@@ -75,49 +75,44 @@ namespace Furegato_Silvia
 
             if ((cellPosition - BoardSize) >= 0)
             {
-                top = _board.get(cellPosition - BoardSize);
+                top = Board[cellPosition - BoardSize];
             }
 
-            if ((cellPosition + BoardSize) < _board.size())
+            if ((cellPosition + BoardSize) < Board.Count)
             {
-                bottom = _board.get(cellPosition + BoardSize);
+                bottom = Board[cellPosition + BoardSize];
             }
 
-            if ((cellPosition + 1) < _board.size() && _board.get(cellPosition + 1).getPosition().getY() != 0)
+            if ((cellPosition + 1) < Board.Count && Board[cellPosition + 1].Position.Item2 != 0)
             {
-                right = _board.get(cellPosition + 1);
+                right = Board[cellPosition + 1];
             }
 
-            if ((cellPosition - 1) >= 0 && _board.get(cellPosition - 1).getPosition().getY() != BoardSize - 1)
+            if ((cellPosition - 1) >= 0 && Board[cellPosition - 1].Position.Item2 != BoardSize - 1)
             {
-                left = _board.get(cellPosition - 1);
+                left = Board[cellPosition - 1];
             }
 
-            _board.get(cellPosition).setAdjacentCells(top, bottom, right, left);
+            Board[cellPosition].SetAdjacentCells(top, bottom, right, left);
         }
 
         /**
-            * Gets the cell at the specified position.
-            * 
-            * @param x X position of the cell.
-            * @param y Y position of the cell.
-            * @return the cell at position (x,y).
-            */
-        public Cell GetCell(int x, int y)
+        * <summary>Method <c>GetCell</c> gets the cell at the specified position.</summary>
+        * 
+        * <param name="x">X position of the cell.</param>
+        * <param name="y">Y position of the cell.</param>
+        * <returns>The cell at position (x,y).</returns>
+        */
+        /*public Cell GetCell(int x, int y)
         {
-            List<Cell> requestedCell = _board.stream()
-                    .filter(cell->cell.getPosition().equals(new Pair<Integer, Integer>(x, y)))
+            List<Cell> requestedCell = Board.Stream()
+                    .filter(cell=>cell.getPosition().equals(new Tuple<int, int>(x, y)))
                     .collect(Collectors.toList());
-            if (requestedCell.isEmpty())
+            if (!requestedCell.Any())
             {
                 return null;
             }
-            return requestedCell.get(0);
-        }
-
-        /**
-            * @return All of the cells contained in the table.
-            */
-        public List<Cell> GetAllCells() => _board;  
+            return requestedCell[0];
+        }*/
     }
 }

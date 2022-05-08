@@ -1,16 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
+﻿
 namespace Furegato_Silvia
 {
     /**
-    * Interface of a moves calculator.
+    * <summary>Interface <c>IMovesCounter</c> models a moves calculator.</summary>
     */
     interface IMovesCounter
     {
         /**
-        * @return The counted moves.
+        * <returns>Method <c>Count</c> returns the counted moves.</returns>
         */
         int Count();
     }
