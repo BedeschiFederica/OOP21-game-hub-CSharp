@@ -1,48 +1,49 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using NUnit.Framework;
 
 namespace Delja_Alesja
 {
-    class Test
+    [TestFixture]
+    public class Test
     {
-        static void TestCell()
+        [SetUp]
+        public void Setup()
+        {
+        }
+        /// <summary>
+        /// Test if the cell is created normally.
+        /// </summary>
+        [Test]
+        public void TestCell()
         {
             Cell cell = new Cell(3, 1, false, false);
-            Console.WriteLine("Prova di Cell!");
-            Console.WriteLine("Tipo cella: " + cell.Type);
-            if (cell.Type == 0)
-            {
-                Console.WriteLine("Cella Vuota");
-            }
-            else if (cell.Type == 1)
-            {
-                Console.WriteLine("Cella Con Mina");
-            }
-            else if (cell.Type == 2)
-            {
-                Console.WriteLine("Cella Con Numero");
-            }
-            else
-            {
-                Console.WriteLine("Hai inserito un numero non esatto");
-            }
-            Console.WriteLine("Posizione cella: " + cell.Position);
-            Console.WriteLine("Cella scoperta: " + cell.IsDiscovered);
-            Console.WriteLine("Cella con flag: " + cell.Flagged);
+            Assert.AreEqual(3, cell.Type);
+            Assert.AreEqual(1, cell.Position);
+            Assert.AreEqual(false, cell.IsDiscovered);
+            Assert.AreEqual(false, cell.Flagged);
+
+
         }
-        static void TestViewField()
+        /// <summary>
+        /// Test of the class Field.
+        /// </summary>
+        [Test]
+        public void TestField()
         {
-            ViewField view = new ViewField(6,4);
-            Console.WriteLine("Test ViewField: ");
-            //da capire come far si che si veda questo metodo
-            //Console.WriteLine("GridSize: " + view.GridSize);
-            //Console.WriteLine("Mines: " + view.Flagged);
+            List<Cell> cell = new List<Cell>
+            {
+                new Cell(3, 1, false, false),
+                new Cell(1, 2, true, true)
+            };
+            Field.SetCell(cell);
+            Assert.AreEqual(cell, Field.GetCell());
         }
-        static void Main(string[] args) 
+
+        static void Main()
         {
-            TestCell();
-            TestViewField();
+            Console.WriteLine("Classe di test");
         }
     }
 }

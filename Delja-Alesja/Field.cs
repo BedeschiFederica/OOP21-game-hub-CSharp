@@ -2,33 +2,29 @@
 using System.Collections.Generic;
 
 namespace Delja_Alesja {
+    /// <summary>
+    /// Class used to create the Field.
+    /// </summary>
     class Field
     {
         private readonly int grid = ViewField.GridSize * ViewField.GridSize;
         //variable needed to know if a cell is picked to have a mine or not
         private bool mine;
         //array that has the position of all the mines
-        private List<int> mines = new ArrayList<>();
-        /**
-         * array that has the position of all the cells.
-        */
-        private static List<Cell> cell = new ArrayList<>();
-
-        /* public Field(final GridLayout grid, final Handler handler)
-         {
-             super(grid);
-             cell.clear();
-             createCells(handler);
-             newCells();
-         }*/
-
-        public void createCells( Handler handler)
+        private readonly List<int> mines = new List<int>();
+        //position of the cells
+        private static List<Cell> cell = new List<Cell>();
+        /// <summary>
+        /// Creates the array of cells and mines
+        /// </summary>
+        public void CreateCells()
         {
             for (int i = 1; i <= ViewField.Mines; i++)
             {
                 while (!mine)
                 {
-                    int minePosition = (int)(Math.random() * grid);
+                    Random rdm = new Random();
+                    int minePosition = (int)(rdm.Next(1,grid));
                     if (!mines.Contains(minePosition))
                     {
                         mines.Add(minePosition);
@@ -42,7 +38,7 @@ namespace Delja_Alesja {
             {
                 if (mines.Contains(i))
                 {
-                    GetCell().Add(new Cell(1, i, false, false, handler));
+                    GetCell().Add(new Cell(1, i, false, false));
                 }
                 else if (i % ViewField.GridSize == 0)
                 {
@@ -52,11 +48,11 @@ namespace Delja_Alesja {
                             || mines.Contains(i + ViewField.GridSize)
                             || mines.Contains(i + ViewField.GridSize + 1))
                     {
-                        GetCell().Add(new Cell(2, i, false, false, handler));
+                        GetCell().Add(new Cell(2, i, false, false));
                     }
                     else
                     {
-                        GetCell().Add(new Cell(0, i, false, false, handler));
+                        GetCell().Add(new Cell(0, i, false, false));
                     }
                 }
                 else if (i % ViewField.GridSize == ViewField.GridSize - 1)
@@ -67,11 +63,11 @@ namespace Delja_Alesja {
                             || mines.Contains(i + ViewField.GridSize - 1)
                             || mines.Contains(i + ViewField.GridSize))
                     {
-                        GetCell().Add(new Cell(2, i, false, false, handler));
+                        GetCell().Add(new Cell(2, i, false, false));
                     }
                     else
                     {
-                        GetCell().Add(new Cell(0, i, false, false, handler));
+                        GetCell().Add(new Cell(0, i, false, false));
                     }
                 }
                 else
@@ -85,29 +81,22 @@ namespace Delja_Alesja {
                             || mines.Contains(i + ViewField.GridSize)
                             || mines.Contains(i + ViewField.GridSize + 1))
                     {
-                        GetCell().Add(new Cell(2, i, false, false, handler));
+                        GetCell().Add(new Cell(2, i, false, false));
                     }
                     else
                     {
-                        GetCell().Add(new Cell(0, i, false, false, handler));
+                        GetCell().Add(new Cell(0, i, false, false));
                     }
                 }
             }
         }
-
-        /**
-         * adding the cells to the field.
-         */
-        private void newCells()
-        {
-            for (int i = 0; i < GetCell().size(); i++)
-            {
-                add(GetCell().get(i));
-            }
-        }
-
+        /// <summary>
+        /// <returns> gets the cell </returns>
+        /// </summary>
         public static List<Cell> GetCell() => cell;
-
-        public static void SetCell(final List<Cell> cell) => Field.cell = cell;
+        /// <summary>
+        /// <returns> sets the cell </returns>
+        /// </summary>
+        public static void SetCell(List<Cell> cell) => Field.cell = cell;
     }
 }
