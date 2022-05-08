@@ -18,11 +18,12 @@ namespace Bedeschi_Federica
         public int LinksToHave { get; }
 
         /// <inheritdoc/>
-        public int CurrentLinks
-        {
-            get => _linksPerSide.Values.Sum();
-        }
+        public int CurrentLinks { get => _linksPerSide.Values.Sum(); }
 
+        /// <summary>
+        /// Builds a new Block.
+        /// <param name="linksToHave"> the total number of links that the block will have to have </param>
+        /// </summary>
         public Block(int linksToHave)
         {
             LinksToHave = linksToHave;

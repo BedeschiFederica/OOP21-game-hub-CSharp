@@ -7,9 +7,9 @@ namespace Bedeschi_Federica
     /// </summary>
     public enum Direction
     {
-        Up = 1,
+        Up = -1,
         Down = -Up,
-        Right = 2,
+        Right = 10,
         Left = -Right
     }
 
@@ -35,15 +35,22 @@ namespace Bedeschi_Federica
             return (Direction)Enum.GetValues(typeof(Direction)).GetValue(randomNum);
         }
 
-        ///// <summary>
-        ///// Gets the position next to the given one, in that direction.
-        ///// </summary>
-        ///// <param name="pos"> the initial position </param>
-        ///// <returns> the position next to pos in that direction </returns>
-        //public Position GetPosition(final Position pos)
-        //{
-        //    Objects.requireNonNull(pos);
-        //    return this.calculatePositionFunc.apply(pos);
-        //}
+        /// <summary>
+        /// Gets the position next to the given one in the given direction.
+        /// </summary>
+        /// <param name="position"> the initial position </param>
+        /// <param name="direction"> the direction of the new position </param>
+        /// <returns> the new position </returns>
+        public static IPosition GetPosition(IPosition position, Direction direction)
+        {
+            if (position == null)
+            {
+                throw new ArgumentNullException(nameof(position));
+            }
+            int xOffset = (int)direction % 10 != 0 ? (int)direction : 0;
+            int yOffset = (int)direction % 10 == 0 ? (int)direction / 10 : 0;
+            return new Position(position.X + xOffset, position.Y + yOffset);
+        }
+
     }
 }
