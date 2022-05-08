@@ -21,10 +21,19 @@ namespace Delja_Alesja
 
 
         }
-        public void TestViewField()
+        public void TestField()
         {
-            ViewField view = new ViewField(6,4);
-            Assert.AreEqual(6 , 6);
+            List<Cell> cell = new List<Cell>
+            {
+                new Cell(3, 1, false, false),
+                new Cell(1, 2, true, true)
+            };
+            Field.SetCell(cell);
+            Assert.AreEqual(cell, Field.GetCell());
+        }
+
+        static void Main() {
+            Console.WriteLine("Classe di test");
         }
     }
 }

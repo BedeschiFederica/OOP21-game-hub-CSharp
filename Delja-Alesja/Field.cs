@@ -19,7 +19,8 @@ namespace Delja_Alesja {
             {
                 while (!mine)
                 {
-                    int minePosition = (int)(Math.random() * grid);
+                    Random rdm = new Random();
+                    int minePosition = (int)(rdm.Next(1,grid));
                     if (!mines.Contains(minePosition))
                     {
                         mines.Add(minePosition);
