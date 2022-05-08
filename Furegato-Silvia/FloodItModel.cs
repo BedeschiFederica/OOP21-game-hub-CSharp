@@ -1,11 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Collections.Generic;
 
 namespace Furegato_Silvia
 {
     /**
-    * Model of the game Flood It.
+    * <summary>Class <c>FloodItModel</c> represents the Flood It game's model.</summary>
     */
     class FloodItModel
     {
@@ -32,7 +30,7 @@ namespace Furegato_Silvia
         }
 
         /**
-        * Creates an instance of the table.
+        * <summary>Method <c>SetTable</c> creates an instance of the table.</summary>
         */
         public void SetTable()
         {
@@ -41,14 +39,14 @@ namespace Furegato_Silvia
         }
 
         /**
-        * Set the maximum of moves the player can make.
+        * <summary>Method <c>SetMaxMoves</c> sets the maximum moves the player can make.</summary>
         */
         public void SetMaxMoves() => _maxMoves = MCounter.Count();
 
         /**
-        * Set the list of colors of the table.
+        * <summary>Method <c>SetSelectedColors</c> sets the list of colors of the table.</summary>
         * 
-        * @param newColors The list of colors.
+        * <param name="newColors">The list of colors.</param>
         */
         public void SetSelectedColors(List<Colors> newColors)
         {
@@ -57,32 +55,32 @@ namespace Furegato_Silvia
         }
 
         /**
-        * Increments the moves counter.
+        * <summary>Method <c>IncrementMoves</c> increments the moves counter.</summary>
         */
         public void IncrementMoves() => _moves++;
 
         /**
-        * @return The table.
+        * <returns>The table.</returns>
         */
         public Table GetTable() => _table;
 
         /**
-        * @return The number of moves made by the player.
+        * <returns>The number of moves made by the player.</returns>
         */
         public int GetMoves() => _moves;
 
         /**
-        * @return The maximum number of moves.
+        * <returns>The maximum number of moves.</returns>
         */
         public int GetMaxMoves() => _maxMoves;
 
         /**
-        * @return A list with all the colors of the table.
+        * <returns>A list with all the colors of the table.</returns>
         */
         public List<Colors> GetSelectedColors() => SelectedColors;
 
         /**
-        * Reset the game model.
+        * <summary>Method <c>Clear</c> resets the game model.</summary>
         */
         public void Clear()
         {

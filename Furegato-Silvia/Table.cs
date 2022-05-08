@@ -103,16 +103,17 @@ namespace Furegato_Silvia
         * <param name="y">Y position of the cell.</param>
         * <returns>The cell at position (x,y).</returns>
         */
-        /*public Cell GetCell(int x, int y)
+        public Cell GetCell(int x, int y)
         {
-            List<Cell> requestedCell = Board.Stream()
-                    .filter(cell=>cell.getPosition().equals(new Tuple<int, int>(x, y)))
-                    .collect(Collectors.toList());
+            IEnumerable<Cell> requestedCell = Board
+                                            .Where(cell => cell.Position.Equals(new Tuple<int, int>(x, y)))
+                                            .Take(1);
+
             if (!requestedCell.Any())
             {
                 return null;
             }
-            return requestedCell[0];
-        }*/
+            return requestedCell.First();
+        }
     }
 }
