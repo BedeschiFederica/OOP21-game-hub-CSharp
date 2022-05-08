@@ -21,6 +21,9 @@ namespace Delja_Alesja
 
 
         }
+        /// <summary>
+        /// Test of the class Field.
+        /// </summary>
         public void TestField()
         {
             List<Cell> cell = new List<Cell>
