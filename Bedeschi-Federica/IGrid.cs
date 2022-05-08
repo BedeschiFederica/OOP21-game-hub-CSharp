@@ -5,7 +5,7 @@ namespace Bedeschi_Federica
     /// <summary>
     /// Interface that represents a (square) grid of blocks.
     /// </summary>
-    public interface Grid
+    public interface IGrid
     {
         /// <summary>
         /// The size of the grid.
