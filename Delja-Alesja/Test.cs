@@ -1,45 +1,30 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using NUnit.Framework;
 
 namespace Delja_Alesja
 {
     class Test
     {
-        static void TestCell()
+        /// <summary>
+        /// Test if the cell is created normally.
+        /// </summary>
+        [Test]
+        public void TestCell()
         {
             Cell cell = new Cell(3, 1, false, false);
-            Console.WriteLine("Prova di Cell!");
-            Console.WriteLine("Tipo cella: " + cell.Type);
-            if (cell.Type == 0)
-            {
-                Console.WriteLine("Cella Vuota");
-            }
-            else if (cell.Type == 1)
-            {
-                Console.WriteLine("Cella Con Mina");
-            }
-            else if (cell.Type == 2)
-            {
-                Console.WriteLine("Cella Con Numero");
-            }
-            else
-            {
-                Console.WriteLine("Hai inserito un numero non esatto");
-            }
-            Console.WriteLine("Posizione cella: " + cell.Position);
-            Console.WriteLine("Cella scoperta: " + cell.IsDiscovered);
-            Console.WriteLine("Cella con flag: " + cell.Flagged);
+            Assert.AreEqual(3, cell.Type);
+            Assert.AreEqual(1, cell.Position);
+            Assert.AreEqual(false, cell.IsDiscovered);
+            Assert.AreEqual(false, cell.Flagged);
+
+
         }
-        static void TestViewField()
+        public void TestViewField()
         {
             ViewField view = new ViewField(6,4);
-            Console.WriteLine("Test ViewField: ");
-        }
-        static void Main()
-        {
-            TestCell();
-            TestViewField();
+            Assert.AreEqual(6 , 6);
         }
     }
 }
