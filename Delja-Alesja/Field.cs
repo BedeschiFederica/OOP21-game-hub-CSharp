@@ -8,21 +8,12 @@ namespace Delja_Alesja {
         //variable needed to know if a cell is picked to have a mine or not
         private bool mine;
         //array that has the position of all the mines
-        private List<int> mines = new List<int>();
-        /**
-         * array that has the position of all the cells.
-        */
+        private readonly List<int> mines = new List<int>();
+        //position of the cells
         private static List<Cell> cell = new List<Cell>();
 
-        /* public Field(final GridLayout grid, final Handler handler)
-         {
-             super(grid);
-             cell.clear();
-             createCells(handler);
-             newCells();
-         }*/
 
-        public void CreateCells( Handler handler)
+        public void CreateCells()
         {
             for (int i = 1; i <= ViewField.Mines; i++)
             {
@@ -42,7 +33,7 @@ namespace Delja_Alesja {
             {
                 if (mines.Contains(i))
                 {
-                    GetCell().Add(new Cell(1, i, false, false, handler));
+                    GetCell().Add(new Cell(1, i, false, false));
                 }
                 else if (i % ViewField.GridSize == 0)
                 {
@@ -52,11 +43,11 @@ namespace Delja_Alesja {
                             || mines.Contains(i + ViewField.GridSize)
                             || mines.Contains(i + ViewField.GridSize + 1))
                     {
-                        GetCell().Add(new Cell(2, i, false, false, handler));
+                        GetCell().Add(new Cell(2, i, false, false));
                     }
                     else
                     {
-                        GetCell().Add(new Cell(0, i, false, false, handler));
+                        GetCell().Add(new Cell(0, i, false, false));
                     }
                 }
                 else if (i % ViewField.GridSize == ViewField.GridSize - 1)
@@ -67,11 +58,11 @@ namespace Delja_Alesja {
                             || mines.Contains(i + ViewField.GridSize - 1)
                             || mines.Contains(i + ViewField.GridSize))
                     {
-                        GetCell().Add(new Cell(2, i, false, false, handler));
+                        GetCell().Add(new Cell(2, i, false, false));
                     }
                     else
                     {
-                        GetCell().Add(new Cell(0, i, false, false, handler));
+                        GetCell().Add(new Cell(0, i, false, false));
                     }
                 }
                 else
@@ -85,24 +76,13 @@ namespace Delja_Alesja {
                             || mines.Contains(i + ViewField.GridSize)
                             || mines.Contains(i + ViewField.GridSize + 1))
                     {
-                        GetCell().Add(new Cell(2, i, false, false, handler));
+                        GetCell().Add(new Cell(2, i, false, false));
                     }
                     else
                     {
-                        GetCell().Add(new Cell(0, i, false, false, handler));
+                        GetCell().Add(new Cell(0, i, false, false));
                     }
                 }
-            }
-        }
-
-        /**
-         * adding the cells to the field.
-         */
-        private void NewCells()
-        {
-            for (int i = 0; i < GetCell().size(); i++)
-            {
-                add(GetCell().get(i));
             }
         }
 

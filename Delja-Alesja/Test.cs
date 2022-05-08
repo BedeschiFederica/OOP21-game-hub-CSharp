@@ -8,7 +8,7 @@ namespace Delja_Alesja
     {
         static void TestCell()
         {
-            Cell cell = new Cell(3, 1, false, false, null);
+            Cell cell = new Cell(3, 1, false, false);
             Console.WriteLine("Prova di Cell!");
             Console.WriteLine("Tipo cella: " + cell.Type);
             if (cell.Type == 0)
@@ -35,9 +35,6 @@ namespace Delja_Alesja
         {
             ViewField view = new ViewField(6,4);
             Console.WriteLine("Test ViewField: ");
-            //da capire come far si che si veda questo metodo
-            //Console.WriteLine("GridSize: " + view.GridSize);
-            //Console.WriteLine("Mines: " + view.Flagged);
         }
         static void Main()
         {
