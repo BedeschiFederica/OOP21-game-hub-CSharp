@@ -5,8 +5,13 @@ using NUnit.Framework;
 
 namespace Delja_Alesja
 {
-    class Test
+    [TestFixture]
+    public class Test
     {
+        [SetUp]
+        public void Setup()
+        {
+        }
         /// <summary>
         /// Test if the cell is created normally.
         /// </summary>
@@ -24,6 +29,7 @@ namespace Delja_Alesja
         /// <summary>
         /// Test of the class Field.
         /// </summary>
+        [Test]
         public void TestField()
         {
             List<Cell> cell = new List<Cell>
@@ -35,7 +41,8 @@ namespace Delja_Alesja
             Assert.AreEqual(cell, Field.GetCell());
         }
 
-        static void Main() {
+        static void Main()
+        {
             Console.WriteLine("Classe di test");
         }
     }
